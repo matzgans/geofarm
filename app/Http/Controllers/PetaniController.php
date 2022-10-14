@@ -17,7 +17,9 @@ class PetaniController extends Controller
     public function index()
     {
         $data = Petani::orderBy('id','desc')->get();
-        return view('petani.petani-index', compact('data'));
+        $countPetani = Petani::count();
+        $active = "petani";
+        return view('petani.petani-index', compact('data', 'countPetani', 'active'));
     }
 
     /**
@@ -27,7 +29,8 @@ class PetaniController extends Controller
      */
     public function create()
     {
-        return view('petani.petani-create');
+        $active = "petani";
+        return view('petani.petani-create', compact('active'));
     }
 
     /**
@@ -73,7 +76,8 @@ class PetaniController extends Controller
     public function show($id)
     {
         $data = Petani::FindOrFail($id);
-        return view('petani.petani-show', compact('data'));
+        $active = "petani";
+        return view('petani.petani-show', compact('data','active'));
     }
 
     /**
@@ -85,7 +89,8 @@ class PetaniController extends Controller
     public function edit($id)
     {
         $data = Petani::FindOrFail($id);
-        return view('petani.petani-edit',compact('data'));
+        $active = "petani";
+        return view('petani.petani-edit',compact('data','active'));
     }
 
     /**
