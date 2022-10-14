@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('detail_lahans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('lahan_id')->constrained('lahans');
+            $table->foreignId('lahan_id')->constrained('lahans')->onDelete('cascade');
             $table->string('foto_lahan');
             $table->timestamps();
         });

@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\{PetaniController, LahanController, LandingController, DetailLahanController};
+use App\Http\Controllers\{AuthController, PetaniController, LahanController, LandingController,
+                             DetailLahanController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,10 @@ Route::post('/lahan/store', [LahanController::class, 'store'])->name('lahan.stor
 Route::get('/detail_lahan/index', [DetailLahanController::class, 'index'])->name('detail_lahan.index');
 Route::get('/detail_lahan/create/{id}', [DetailLahanController::class, 'create'])->name('detail_lahan.create');
 Route::post('/detail_lahan/store', [DetailLahanController::class, 'store'])->name('detail_lahan.store');
+
+
+Route::get('/auth/register', [AuthController::class, 'register'])->name('register');
+Route::post('/auth/registerproses', [AuthController::class, 'registerproses'])->name('registerproses');
+Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/loginproses', [AuthController::class, 'loginproses'])->name('loginproses');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

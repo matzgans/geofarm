@@ -14,6 +14,7 @@
 
     <div class="container mt-3">
         <div class="row">
+          <a href="{{route('logout')}}" class="btn btn-success">Logout</a>
 
             <div id="app" style="width:100%; height:500px;"></div>
         </div>

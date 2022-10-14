@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('lahans', function (Blueprint $table) {
             $table->id();
             $table->integer('luas');
-            $table->foreignId('petani_id')->constrained('petanis');
+            $table->foreignId('petani_id')->constrained('petanis')->onDelete('cascade');
             $table->string('status_pengairan');
             $table->string('lat');
             $table->string('long');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Petani, User};
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use function PHPUnit\Framework\fileExists;
 
@@ -43,6 +44,7 @@ class PetaniController extends Controller
         $user->email = strtolower(str_replace(' ', '.', $request->nama.'.com'));
         $user->password = bcrypt('petani123');
         $user->role = 'petani';
+        $user->remember_token = Str::random(60);
         $user->save();
         $request->request->add(['user_id'=> $user->id]);
         

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\{Pegawai, Petani};
 
 class User extends Authenticatable
 {
@@ -42,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pegawai()
+    {
+        return $this->hasOne(Pegawai::class);
+    }
+
+    public function petani()
+    {
+        return $this->hasOne(Petani::class);
+    }
 }
