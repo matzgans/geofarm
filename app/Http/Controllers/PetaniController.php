@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use function PHPUnit\Framework\fileExists;
+use function PHPUnit\Framework\isEmpty;
 
 class PetaniController extends Controller
 {
@@ -109,23 +110,71 @@ class PetaniController extends Controller
             'name'=>$request->nama,
             'email'=>strtolower(str_replace(' ','.', $request->nama.'.com')),
         ]);
-        if (file_exists(public_path() . '/foto/'.$data->foto)) {
-            unlink(public_path() . '/foto/'.$data->foto);
-        }
-        $data->update([
-            'nama'=>$request->nama,
-            'nik'=>$request->nik,
-            'tempat_lahir'=>$request->tempat_lahir,
-            'tanggal_lahir'=>$request->tanggal_lahir,
-            'foto'=>$request->foto,
-            'alamat'=>$request->alamat,
-        ]);
-        if($request->hasFile('foto')){
-            $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
-            $data->foto = $request->file('foto')->getClientOriginalName();
-            $data->save();
+
+        if($request->foto == null){
+            $data->update([
+                'nama'=>$request->nama,
+                'nik'=>$request->nik,
+                'tempat_lahir'=>$request->tempat_lahir,
+                'tanggal_lahir'=>$request->tanggal_lahir,
+                'foto'=>$data->foto,
+                'alamat'=>$request->alamat,
+            ]);
+            return redirect()->back();
+        }else{
+            if (file_exists(public_path() . '/foto/'.$data->foto)) {
+                unlink(public_path() . '/foto/'.$data->foto);
+            }
+           
+            $data->update([
+                'nama'=>$request->nama,
+                'nik'=>$request->nik,
+                'tempat_lahir'=>$request->tempat_lahir,
+                'tanggal_lahir'=>$request->tanggal_lahir,
+                'foto'=>$request->foto,
+                'alamat'=>$request->alamat,
+            ]);
+            if($request->hasFile('foto')){
+               
+                $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
+                $data->foto = $request->file('foto')->getClientOriginalName();
+                $data->save();
+            }
         }
         return redirect()->back();
+        
+        // if(isEmpty($request->foto)){
+        //     $data->update([
+        //         'nama'=>$request->nama,
+        //         'nik'=>$request->nik,
+        //         'tempat_lahir'=>$request->tempat_lahir,
+        //         'tanggal_lahir'=>$request->tanggal_lahir,
+        //         'foto'=>$data->foto,
+        //         'alamat'=>$request->alamat,
+        //     ]);
+        //     return redirect()->back();
+        // }
+        // if($request->foto != null){
+        //     if (file_exists(public_path() . '/foto/'.$data->foto)) {
+        //         unlink(public_path() . '/foto/'.$data->foto);
+        //     }
+           
+        //     $data->update([
+        //         'nama'=>$request->nama,
+        //         'nik'=>$request->nik,
+        //         'tempat_lahir'=>$request->tempat_lahir,
+        //         'tanggal_lahir'=>$request->tanggal_lahir,
+        //         'foto'=>$request->foto,
+        //         'alamat'=>$request->alamat,
+        //     ]);
+        //     if($request->hasFile('foto')){
+               
+        //         $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
+        //         $data->foto = $request->file('foto')->getClientOriginalName();
+        //         $data->save();
+        //     }
+        // }
+        // return redirect()->back();
     }
 
     /**
@@ -139,6 +188,8 @@ class PetaniController extends Controller
         $data = Petani::FindOrFail($id);
         if (file_exists(public_path() . '/foto/'.$data->foto)) {
             unlink(public_path() . '/foto/'.$data->foto);
+            $data->delete();
+            $data->user->delete();
         }
         $data->delete();
         $data->user->delete();
