@@ -1,43 +1,48 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  </head>
-  <body>
+@extends('layout.dashboard-template')
+@section('title', 'Dashboard Petani')
+@section('content')
+ <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/font-awesome.min.css">
 
-    <div class="container mt-3">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <td>Nama</td>
-                            <td>Nik</td>
-                            <td>Email</td>
-                            <td>Aksi</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $item)
+ 
+            <div class="card">
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Data Petani</h5>
+                    <a href="{{route('petani.create')}}" class="btn btn-sm btn-success mb-3">Tambah Data</a>
+
+                    <table class="table table-hover" id="dataTable">
+                        <thead>
+                            <tr class="fw-bold">
+                                <th>Nama</th>
+                                <th>Nik</th>
+                                <th>Email</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-striped">
+                            @foreach ($data as $item)
                             <tr>
                                 <td>{{$item->nama}}</td>
                                 <td>{{$item->nik}}</td>
                                 <td>{{$item->user->email}}</td>
                                 <td>
-                                    <a href="{{route('petani.destroy',$item->id)}}" class="btn btn-danger">Hapus</a>
-                                    <a href="{{route('petani.edit',$item->id)}}" class="btn btn-warning">Edit</a>
-                                    <a href="{{route('petani.show',$item->id)}}" class="btn btn-primary">Lihat</a>
+                                    <a href="{{route('petani.show',$item->id)}}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="{{route('petani.edit',$item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="{{route('petani.destroy',$item->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  </body>
-</html>
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#dataTable').DataTable();
+                });
+            </script>
+            @endsection
