@@ -44,13 +44,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function petani()
+    {
+        return $this->hasOne(Petani::class);
+    }
+
     public function pegawai()
     {
         return $this->hasOne(Pegawai::class);
     }
 
-    public function petani()
-    {
-        return $this->hasOne(Petani::class);
-    }
+   
 }

@@ -26,8 +26,8 @@ class DetailLahanController extends Controller
      */
     public function create($id)
     {
-        dd($id);
-        return view('detail_lahan.detail-lahan-create');
+        $data = Lahan::FindOrFail($id);
+        return view('detail_lahan.detail-lahan-create', compact('data'));
     }
 
     /**
@@ -36,9 +36,16 @@ class DetailLahanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->request->add(['lahan_id'=>$id]);
+        $data = Detail_lahan::create($request->all());
+        if($request->hasFile('foto_lahan')){
+            $request->file('foto_lahan')->move('foto_lahan/',$request->file('foto_lahan')->getClientOriginalName());
+            $data->foto_lahan = $request->file('foto_lahan')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->route('detail_lahan.index');
     }
 
     /**
@@ -49,7 +56,7 @@ class DetailLahanController extends Controller
      */
     public function show(Detail_lahan $detail_lahan)
     {
-        //
+        
     }
 
     /**

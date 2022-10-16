@@ -1,5 +1,4 @@
 @extends('layout.dashboard-template')
-@section('title','Tambah Petani')
 @section('content')
 
 <div class="card w-75 mx-auto">

@@ -37,7 +37,13 @@ class LahanController extends Controller
      */
     public function store(Request $request)
     {
-        Lahan::create($request->all());
+        Lahan::create([
+            'luas'=>$request->luas,
+            'status_pengairan'=>$request->status_pengairan,
+            'lat'=>$request->lat,
+            'long'=>$request->long,
+            'petani_id'=>auth()->user()->petani->id,
+        ]);
         return redirect()->back();
     }
 

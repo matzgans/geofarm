@@ -24,7 +24,7 @@ class Lahan extends Model
         return $this->belongsTo(Petani::class);
     }
 
-    public function Detail_lahans()
+    public function detail_lahans()
     {
         return $this->hasMany(Detail_lahan::class);
     }

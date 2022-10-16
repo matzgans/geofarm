@@ -25,15 +25,6 @@
                             <input type="number" name="luas" class="form-control" id="luas">
                         </div>
                         <div class="col-md-12 col-6 mb-2">
-                            <label for="petani_id" class="form-label">petani</label>
-                            <select class="form-select" name="petani_id" id="petani_id" aria-label="Default select example">
-                                <option selected>Petani</option>
-                                @foreach ($data as $item)
-                                    <option value="{{$item->id}}">{{$item->nama}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-12 col-6 mb-2">
                             <label for="status_pengairan" class="form-label">Status Pengairan</label>
                             <select class="form-select" name="status_pengairan" aria-label="Default select example">
                                 <option selected>Pengairan</option>

@@ -6,9 +6,6 @@ use App\Models\{Petani, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use function PHPUnit\Framework\fileExists;
-use function PHPUnit\Framework\isEmpty;
-
 class PetaniController extends Controller
 {
     /**
@@ -45,7 +42,7 @@ class PetaniController extends Controller
     {
         $user = new User;
         $user->name = $request->nama;
-        $user->email = strtolower(str_replace(' ', '.', $request->nama.'.com'));
+        $user->email = strtolower(str_replace(' ', '.', $request->nama.'@gmail.com'));
         $user->password = bcrypt('petani123');
         $user->role = 'petani';
         $user->remember_token = Str::random(60);

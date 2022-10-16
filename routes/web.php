@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [LandingController::class, 'index'])->name('welcome');
-Route::group(['middleware', ['auth', 'hakakses:pegawai']], function(){
-    Route::get('/dashboard', [LandingController::class, 'dashboard'])->name('dashboard');
+Route::group(['middleware' => ['auth', 'hakakses:pegawai']], function(){
     // petani
     Route::get('/petani/index', [PetaniController::class, 'index'])->name('petani.index');
     Route::get('/petani/create', [PetaniController::class, 'create'])->name('petani.create');
@@ -29,17 +28,25 @@ Route::group(['middleware', ['auth', 'hakakses:pegawai']], function(){
     Route::post('/petani/update/{id}', [PetaniController::class, 'update'])->name('petani.update');
 });
 
+Route::group(['middleware' => ['auth', 'hakakses:petani']], function(){
+    // lahans
+    Route::get('/lahan/index', [LahanController::class, 'index'])->name('lahan.index');
+    Route::get('/lahan/create', [LahanController::class, 'create'])->name('lahan.create');
+    Route::post('/lahan/store', [LahanController::class, 'store'])->name('lahan.store');
+
+    // Detail Lahans
+    Route::get('/detail_lahan/index', [DetailLahanController::class, 'index'])->name('detail_lahan.index');
+    Route::get('/detail_lahan/create/{id}', [DetailLahanController::class, 'create'])->name('detail_lahan.create');
+    Route::post('/detail_lahan/store/{id}', [DetailLahanController::class, 'store'])->name('detail_lahan.store');
+});
+
+Route::group(['middleware' => ['auth', 'hakakses:petani,pegawai']], function(){
+    Route::get('/dashboard', [LandingController::class, 'dashboard'])->name('dashboard');
+});
 
 
-// lahans
-Route::get('/lahan/index', [LahanController::class, 'index'])->name('lahan.index');
-Route::get('/lahan/create', [LahanController::class, 'create'])->name('lahan.create');
-Route::post('/lahan/store', [LahanController::class, 'store'])->name('lahan.store');
 
-// Detail Lahans
-Route::get('/detail_lahan/index', [DetailLahanController::class, 'index'])->name('detail_lahan.index');
-Route::get('/detail_lahan/create/{id}', [DetailLahanController::class, 'create'])->name('detail_lahan.create');
-Route::post('/detail_lahan/store', [DetailLahanController::class, 'store'])->name('detail_lahan.store');
+
 
 
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('tanggal_lahir');
             $table->string('foto')->nullable();
             $table->text('alamat');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

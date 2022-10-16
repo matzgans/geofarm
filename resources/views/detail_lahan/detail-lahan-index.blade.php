@@ -14,37 +14,33 @@
 
     <div class="container mt-3">
         <div class="row">
-
-            <div id="app" style="width:100%; height:500px;"></div>
+          <div class="col-md-10">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Luas</th>
+                    <th>Status Pengairan</th>
+                    <th>kategor Tanaman</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($data as $item)
+                  <tr>
+                    <td>{{$item->luas}}</td>
+                    <td>{{$item->status_pengairan}}</td>
+                    <td>
+                      <ol>
+                          @foreach($item->detail_lahans as $detail)
+                          <li>{{$detail->nama}}</li>
+                          @endforeach
+                        </ol>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+            </table>
+          </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
-    <script>
-
-        var map = L.map('app').setView([0.5663641476309691, 123.117084773985], 18);
-    
-        googleTerrain = L.tileLayer('http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}',{
-            maxZoom: 20,
-            subdomains:['mt0','mt1','mt2','mt3']
-        }).addTo(map);
-
-        @foreach($data as $item)
-
-          L.marker([{{$item->lat}}, {{$item->long}}]).addTo(map)
-            .bindPopup(
-            "Pemilik : {{$item->petani->nama}} <br>"+ 
-            "Luas : {{$item->luas}} <br>"+
-            "Pengairan : {{$item->status_pengairan}} <br>"+
-            "<button onclick='myFunction()' id='detail' data-id='{{$item->id}}' class='btn btn-success mt-2'>Tambah Detail</button>"
-            ).openPopup();
-
-            function myFunction(){
-                var id = $('#detail').attr('data-id')
-                window.location="/detail_lahan/create/"+id+""
-            }
-        @endforeach
-    
-    </script>
   </body>
 </html>

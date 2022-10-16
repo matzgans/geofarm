@@ -73,7 +73,6 @@ class AuthController extends Controller
         }else{
             return redirect()->back()->with('message', 'Periksa Email Password'); 
         }
-        dd($request);
     }
 
     public function logout()

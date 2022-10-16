@@ -1,5 +1,4 @@
 @extends('layout.dashboard-template')
-@section('title', 'Edit Petani')
 @section('content')
 
 

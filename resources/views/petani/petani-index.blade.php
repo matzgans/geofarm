@@ -1,5 +1,4 @@
 @extends('layout.dashboard-template')
-@section('title', 'Dashboard Petani')
 @section('content')
  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">

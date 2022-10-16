@@ -35,20 +35,19 @@
             .bindPopup(
             "Pemilik : {{$item->petani->nama}} <br>"+ 
             "Luas : {{$item->luas}} <br>"+
-            "lat : {{$item->lat}} <br>"+ 
-            "long : {{$item->long}} <br>"+ 
-            "Pengairan : {{$item->status_pengairan}}"
+            "Pengairan : {{$item->status_pengairan}}"+
+            "kategori tanaman @foreach($item->detail_lahans as $detail) {{$detail}} @endforeach"
             ).openPopup();
 
-            latlngs = [
-                [[0.56956843208778, 123.1192718446255],
-                [0.5691848951373146, 123.11909884214404],
-                [0.5690266526118511, 123.11957359313966]],
-                [[0.56956843208778, 123.1192718446255],
-                [0.5693914150368898, 123.11975061893465],
-                [0.5690078780746564, 123.1195628643036],
-                ], 
-            ];
+            // latlngs = [
+            //     [[0.56956843208778, 123.1192718446255],
+            //     [0.5691848951373146, 123.11909884214404],
+            //     [0.5690266526118511, 123.11957359313966]],
+            //     [[0.56956843208778, 123.1192718446255],
+            //     [0.5693914150368898, 123.11975061893465],
+            //     [0.5690078780746564, 123.1195628643036],
+            //     ], 
+            // ];
 
             // var latlngs = [
             //     [[ 0.56956843208778, 123.1192718446255],
@@ -60,10 +59,10 @@
                 
             // ];
 
-            var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+            // var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
             // zoom the map to the polyline
-            map.fitBounds(polyline.getBounds());
+            // map.fitBounds(polyline.getBounds());
         @endforeach
 
     

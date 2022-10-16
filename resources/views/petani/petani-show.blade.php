@@ -1,5 +1,4 @@
 @extends('layout.dashboard-template')
-@section('title', 'Detail Petani')
 @section('content')
     @php
         $splitName = explode(' ', $data->nama, 2);

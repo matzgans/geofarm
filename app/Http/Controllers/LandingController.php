@@ -16,9 +16,12 @@ class LandingController extends Controller
     public function dashboard()
     {
         $data = Lahan::get();
+        if(auth()->user()->role != 'pegawai'){
+            $petanis = auth()->user()->petani->lahans;
+            return view('dashboard', compact('petanis'));
+        }
         $countPetani = Petani::count();
         $countLahan = Lahan::count();
-        $active = "dashboard";
-        return view('dashboard', compact('data', 'countPetani', 'countLahan','active'));
+        return view('dashboard', compact('data', 'countPetani', 'countLahan'));
     }
 }

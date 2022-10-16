@@ -256,13 +256,13 @@
 
                         <a
                             class="nav-link nav-profile d-flex align-items-center pe-0"
-                            href="#"
+                            href="{{route('logout')}}"
                             data-bs-toggle="dropdown">
                             <img
                                 src="{{asset('assetsDashboard')}}/img/profile-img.jpg"
                                 alt="Profile"
                                 class="rounded-circle">
-                            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2">{{auth()->user()->role}}</span>
                         </a>
                         <!-- End Profile Iamge Icon -->
 
@@ -330,15 +330,37 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link {{($active == "dashboard")?'active':'collapsed'}}" href="{{route('dashboard')}}">
+                    <a class="nav-link" href="{{route('dashboard')}}">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+                
+                @if(auth()->user()->role == 'petani')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('lahan.index')}}">
+                            <i class="bi bi-grid"></i>
+                            <span>Lahan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('detail_lahan.index')}}">
+                            <i class="bi bi-grid"></i>
+                            <span>Detail Lahan</span>
+                        </a>
+                    </li>
+                @elseif(auth()->user()->role == 'pegawai')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('petani.index')}}">
+                            <i class="bi bi-grid"></i>
+                            <span>Petani</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
-                    <a class="nav-link {{($active == "petani")?'active':'collapsed'}}" href="{{route('petani.index')}}">
+                    <a class="nav-link" href="{{route('logout')}}">
                         <i class="bi bi-grid"></i>
-                        <span>Petani</span>
+                        <span>lOGOUT</span>
                     </a>
                 </li>
                 <!-- End Dashboard Nav -->
@@ -641,18 +663,6 @@
         <!-- End Sidebar-->
 
         <main id="main" class="main">
-
-            <div class="pagetitle">
-                <h1>Dashboard Petani</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{{url('petani/index    ')}}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">@yield('title')</li>
-                    </ol>
-                </nav>
-            </div>
             <!-- End Page Title -->
 
             <section class="section dashboard">                
