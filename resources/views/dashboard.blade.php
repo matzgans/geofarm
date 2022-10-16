@@ -1,21 +1,21 @@
 @extends('layout.dashboard-template')
+
+
+@section('css')
+
+
+@endsection
+
 @section('content')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
-
-<div class="row">
-    @if(auth()->user()->role == 'pegawai')    
-        <h2 class="text-dark">{{auth()->user()->name}}</h2>
-        <div class="col-sm-3">
+@if(auth()->user()->role == 'pegawai')    
+    <div class="row">
+        <h2 class="text-dark text-capitalize">Selamat Datang, {{auth()->user()->name}}</h2>
+        <div class="col-sm-4">
             <div class="card bg-success">
                 <div class="card-body">
-                    <h3 class="my-1 text-light fw-bold ms-auto">Jumlah Petani</h3>
+                    <h3 class="my-3 text-light fw-bold ms-auto">Jumlah Petani</h3>
                     <div class="row">
                         <div class="col-5">
                             <h3 class="text-light ">{{ $countPetani }}</h3>
@@ -27,10 +27,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="card bg-success">
                 <div class="card-body">
-                    <h3 class="my-1 text-light fw-bold ms-auto">Jumlah Lahan</h3>
+                    <h3 class="my-3 text-light fw-bold ms-auto">Jumlah Lahan</h3>
                     <div class="row">
                         <div class="col-5">
                             <h3 class="text-light ">{{ $countLahan }}</h3>
@@ -42,24 +42,54 @@
                 </div>
             </div>
         </div>
-        
-        <div class="rounded" id="app" style="width:100%; height:500px;"></div>
-    @endif
-</div>
+    </div>
+    <div class="rounded" id="app" style="width:100%; height:500px;"></div>
+@endif
 
 <div class="row">
     @if(auth()->user()->role == 'petani')    
-        <h2 class="text-dark">Hallo {{auth()->user()->name}}</h2>
+    <div class="row">
+        <h2 class="text-dark text-capitalize">Selamat Datang, {{auth()->user()->name}}</h2>
+        <div class="col-sm-4">
+            <div class="card bg-success">
+                <div class="card-body">
+                    <h4 class="my-3 text-light fw-bold ms-auto">Jumlah Lahan Dimiliki</h4>
+                    <div class="row">
+                        <div class="col-5">
+                            <h3 class="text-light ">{{$countLahan}}</h3>
+                        </div>
+                        <div class="col">
+                            <h3 class="text-light fw-bold text-end"> <i class="fa-solid fa-user ms-3"></i></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card bg-success">
+                <div class="card-body">
+                    <h4 class="my-3 text-light fw-bold ms-auto">Jumlah Panen</h4>
+                    <div class="row">
+                        <div class="col-5">
+                            <h3 class="text-light "></h3>
+                        </div>
+                        <div class="col">
+                            <h3 class="text-light fw-bold text-end"> <i class="fa-solid fa-tractor"></i></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="rounded" id="myapp" style="width:100%; height:500px;"></div>
     @endif
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+@endsection
+@section('script')
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-</script>
-<script src="https://code.jquery.com/jquery-3.6.1.slim.js"
-    integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+</script> --}}
+
 <script>
     @if(auth()->user()->role == 'petani')
         var map = L.map('myapp').setView([0.5663641476309691, 123.117084773985], 18);

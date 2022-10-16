@@ -71,8 +71,8 @@
                             </div>
                             
                             <div class="row">
-                                <div class="col mt-5">
-                                  <button onclick="history.back()" class="btn btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</button>
+                                <div class="col pt-3">
+                                  <a href="{{route('petani.index')}}" class="btn btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
                                 </div>
                             </div>
                         </div>

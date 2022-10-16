@@ -18,10 +18,13 @@ class LandingController extends Controller
         $data = Lahan::get();
         if(auth()->user()->role != 'pegawai'){
             $petanis = auth()->user()->petani->lahans;
-            return view('dashboard', compact('petanis'));
+            $active = 'dashboard';
+            $countLahan = Lahan::where('petani_id','=',auth()->user()->petani->id)->first()->count();
+            return view('dashboard', compact('petanis','active','countLahan'));
         }
         $countPetani = Petani::count();
         $countLahan = Lahan::count();
-        return view('dashboard', compact('data', 'countPetani', 'countLahan'));
+        $active = 'dashboard';
+        return view('dashboard', compact('data', 'countPetani', 'countLahan', 'active'));
     }
 }

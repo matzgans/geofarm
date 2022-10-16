@@ -64,7 +64,7 @@ class PetaniController extends Controller
             $data->foto = $request->file('foto')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->back();
+        return redirect()->route('petani.index');
     }
 
     /**

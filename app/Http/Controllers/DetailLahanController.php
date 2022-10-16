@@ -16,7 +16,11 @@ class DetailLahanController extends Controller
     public function index()
     {
         $data = Lahan::all();
-        return view('detail_lahan.detail-lahan-index' ,compact('data'));
+        $active = 'dashboard';
+        $id_lahan = Lahan::where('petani_id',auth()->user()->petani->id)->first()->id;
+        $detailAva = Detail_lahan::where('lahan_id', $id_lahan)->first();
+        $active = 'detaillahan';
+        return view('detail_lahan.detail-lahan-index' ,compact('data','active','detailAva','active'));
     }
 
     /**

@@ -15,7 +15,8 @@ class LahanController extends Controller
     public function index()
     {
         $data = Lahan::all();
-        return view('lahan.lahan-index', compact('data'));
+        $active = 'lahan';
+        return view('lahan.lahan-index', compact('data','active'));
     }
 
     /**
@@ -26,7 +27,8 @@ class LahanController extends Controller
     public function create()
     {
         $data = Petani::get();
-        return view('lahan.lahan-create', compact('data'));
+        $active = 'lahan';
+        return view('lahan.lahan-create', compact('data', 'active'));
     }
 
     /**
