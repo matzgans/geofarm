@@ -15,8 +15,14 @@ class LahanController extends Controller
     public function index()
     {
         $data = Lahan::all();
+<<<<<<< Updated upstream
         $active = 'lahan';
         return view('lahan.lahan-index', compact('data','active'));
+=======
+        $item = Lahan::where('petani_id', auth()->user()->petani->id)->first();
+        dd($item->created_at);
+        return view('lahan.lahan-index', compact('data'));
+>>>>>>> Stashed changes
     }
 
     /**
