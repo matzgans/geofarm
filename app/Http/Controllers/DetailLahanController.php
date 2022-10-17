@@ -17,10 +17,10 @@ class DetailLahanController extends Controller
     {
         $data = Lahan::all();
         $active = 'dashboard';
-        $id_lahan = Lahan::where('petani_id',auth()->user()->petani->id)->first()->id;
+        $id_lahan = Lahan::where('petani_id', auth()->user()->petani->id)->first()->id;
         $detailAva = Detail_lahan::where('lahan_id', $id_lahan)->first();
         $active = 'detaillahan';
-        return view('detail_lahan.detail-lahan-index' ,compact('data','active','detailAva','active'));
+        return view('detail_lahan.detail-lahan-index', compact('data', 'active', 'detailAva', 'active'));
     }
 
     /**
@@ -31,7 +31,8 @@ class DetailLahanController extends Controller
     public function create($id)
     {
         $data = Lahan::FindOrFail($id);
-        return view('detail_lahan.detail-lahan-create', compact('data'));
+        $active = "detaillahan";
+        return view('detail_lahan.detail-lahan-create', compact('data', 'active'));
     }
 
     /**
@@ -42,10 +43,10 @@ class DetailLahanController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $request->request->add(['lahan_id'=>$id]);
+        $request->request->add(['lahan_id' => $id]);
         $data = Detail_lahan::create($request->all());
-        if($request->hasFile('foto_lahan')){
-            $request->file('foto_lahan')->move('foto_lahan/',$request->file('foto_lahan')->getClientOriginalName());
+        if ($request->hasFile('foto_lahan')) {
+            $request->file('foto_lahan')->move('foto_lahan/', $request->file('foto_lahan')->getClientOriginalName());
             $data->foto_lahan = $request->file('foto_lahan')->getClientOriginalName();
             $data->save();
         }
@@ -60,7 +61,6 @@ class DetailLahanController extends Controller
      */
     public function show(Detail_lahan $detail_lahan)
     {
-        
     }
 
     /**
