@@ -26,8 +26,8 @@
     <link href="{{ asset('assetsDashboard') }}/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="{{ asset('assetsDashboard') }}/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="{{ asset('assetsDashboard') }}/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="{{ asset('assetsDashboard') }}/vendor/simple-datatables/style.css" rel="stylesheet">
-
+    {{-- <link href="{{ asset('assetsDashboard') }}/vendor/simple-datatables/style.css" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <!-- Template Main CSS File -->
     <link href="{{ asset('assetsDashboard') }}/css/style.css" rel="stylesheet">
 
@@ -314,7 +314,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ $active == 'dashboard' ? 'active' : 'collapsed' }}"
                     href="{{ route('dashboard') }}">
-                    <i class="bi bi-grid"></i>
+                    <i class="fa-solid fa-gauge-high"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -323,14 +323,14 @@
                 <li class="nav-item">
                     <a class="nav-link {{ $active == 'lahan' ? 'active' : 'collapsed' }}"
                         href="{{ route('lahan.index') }}">
-                        <i class="bi bi-grid"></i>
+                        <i class="fa-solid fa-tractor"></i>
                         <span>Lahan</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $active == 'detaillahan' ? 'active' : 'collapsed' }}"
                         href="{{ route('detail_lahan.index') }}">
-                        <i class="bi bi-grid"></i>
+                        <i class="fa-solid fa-seedling"></i>
                         <span>Detail Lahan</span>
                     </a>
                 </li>
@@ -338,8 +338,22 @@
                 <li class="nav-item">
                     <a class="nav-link {{ $active == 'petani' ? 'active' : 'collapsed' }}"
                         href="{{ route('petani.index') }}">
-                        <i class="bi bi-grid"></i>
+                        <i class="fa-solid fa-person"></i>
                         <span>Petani</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ $active == 'berita' ? 'active' : 'collapsed' }}"
+                        href="{{ route('berita.index') }}">
+                        <i class="fa-solid fa-video"></i>
+                        <span>Berita</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ $active == 'respon' ? 'active' : 'collapsed' }}"
+                        href="{{ route('reponse.index') }}">
+                        <i class="fa-solid fa-reply-all"></i>
+                        <span>Respon Masyarakat</span>
                     </a>
                 </li>
             @endif
@@ -681,17 +695,22 @@
     <script src="{{ asset('assetsDashboard') }}/vendor/chart.js/chart.min.js"></script>
     <script src="{{ asset('assetsDashboard') }}/vendor/echarts/echarts.min.js"></script>
     <script src="{{ asset('assetsDashboard') }}/vendor/quill/quill.min.js"></script>
-    <script src="{{ asset('assetsDashboard') }}/vendor/simple-datatables/simple-datatables.js"></script>
+    {{-- <script src="{{ asset('assetsDashboard') }}/vendor/simple-datatables/simple-datatables.js"></script> --}}
     <script src="{{ asset('assetsDashboard') }}/vendor/tinymce/tinymce.min.js"></script>
     <script src="{{ asset('assetsDashboard') }}/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assetsDashboard') }}/js/main.js"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.1.slim.js"
-        integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script> --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> --}}
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function(){
+            $('.dataTable').DataTable();
+        })
+    </script>
+
+        
     @yield('script')
 </body>
 

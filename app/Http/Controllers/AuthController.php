@@ -63,6 +63,7 @@ class AuthController extends Controller
             'email'=>['required', 'email'],
             'password'=>['required'],
             'current_password'=>['required'],
+            'g-recaptcha-response' => ['required'],
         ]);
 
         if($request->password != $request->current_password){

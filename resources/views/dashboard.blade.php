@@ -9,81 +9,170 @@
 @section('content')
 
 
-@if(auth()->user()->role == 'pegawai')    
+@if(auth()->user()->role == 'pegawai') 
     <div class="row">
-        <h2 class="text-dark text-capitalize">Selamat Datang, {{auth()->user()->name}}</h2>
-        <div class="col-sm-4">
-            <div class="card bg-success">
-                <div class="card-body">
-                    <h3 class="my-3 text-light fw-bold ms-auto">Jumlah Petani</h3>
-                    <div class="row">
-                        <div class="col-5">
-                            <h3 class="text-light ">{{ $countPetani }}</h3>
-                        </div>
-                        <div class="col">
-                            <h3 class="text-light fw-bold text-end"> <i class="fa-solid fa-user ms-3"></i></h3>
-                        </div>
-                    </div>
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Petani</h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-person"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{$countPetani}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Petani</span>
+
+                  </div>
                 </div>
+              </div>
+
             </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card bg-success">
-                <div class="card-body">
-                    <h3 class="my-3 text-light fw-bold ms-auto">Jumlah Lahan</h3>
-                    <div class="row">
-                        <div class="col-5">
-                            <h3 class="text-light ">{{ $countLahan }}</h3>
-                        </div>
-                        <div class="col">
-                            <h3 class="text-light fw-bold text-end"> <i class="fa-solid fa-tractor"></i></h3>
-                        </div>
-                    </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Lahan</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="fa-solid fa-tractor"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{$countLahan}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Lahan</span>
+
+                  </div>
                 </div>
+              </div>
+
             </div>
-        </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Di Tanam</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="fa-solid fa-seedling"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{$countTanam}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Di Tanam</span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Sawah</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{$countSawah}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Sawah</span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Jagung</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{$countJagung}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Jagung</span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div><!-- End Sales Card -->
     </div>
+
+    <div class="row">
     <div class="rounded" id="app" style="width:100%; height:500px;"></div>
 @endif
-
-<div class="row">
-    @if(auth()->user()->role == 'petani')    
+@if(auth()->user()->role == 'petani')    
     <div class="row">
-        <h2 class="text-dark text-capitalize">Selamat Datang, {{auth()->user()->name}}</h2>
-        <div class="col-sm-4">
-            <div class="card bg-success">
-                <div class="card-body">
-                    <h4 class="my-3 text-light fw-bold ms-auto">Jumlah Lahan Dimiliki</h4>
-                    <div class="row">
-                        <div class="col-5">
-                            <h3 class="text-light ">{{$countLahan}}</h3>
-                        </div>
-                        <div class="col">
-                            <h3 class="text-light fw-bold text-end"> <i class="fa-solid fa-user ms-3"></i></h3>
-                        </div>
-                    </div>
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+            <div class="card-body">
+                <h5 class="card-title">Lahan</span></h5>
+
+                <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-primary">
+                    <i class="fa-solid fa-tractor"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>{{$lahan1}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Lahan</span>
+
+                </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card bg-success">
-                <div class="card-body">
-                    <h4 class="my-3 text-light fw-bold ms-auto">Jumlah Panen</h4>
-                    <div class="row">
-                        <div class="col-5">
-                            <h3 class="text-light "></h3>
-                        </div>
-                        <div class="col">
-                            <h3 class="text-light fw-bold text-end"> <i class="fa-solid fa-tractor"></i></h3>
-                        </div>
-                    </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+            <div class="card-body">
+                <h5 class="card-title">Di Tanam</span></h5>
+
+                <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success">
+                  <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>{{$countTanam}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Di Tanam</span>
+
+                </div>
                 </div>
             </div>
-        </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+            <div class="card-body">
+                <h5 class="card-title">Sawah</span></h5>
+
+                <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>{{$countSawah}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Sawah  </span>
+
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div><!-- End Sales Card -->
     </div>
         <div class="rounded" id="myapp" style="width:100%; height:500px;"></div>
-    @endif
-</div>
+@endif
 @endsection
 @section('script')
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

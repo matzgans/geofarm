@@ -13,7 +13,8 @@
                     <tr class="fw-bold">
                         <th>Luas</th>
                         <th>Status Pengairan</th>
-                        <th>kategor Tanaman</th>
+                        <th>kategori Tanaman, Umur Tanaman</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -28,7 +29,8 @@
                                 <ol>
                                   @forelse($item->detail_lahans as $detail)
                                     <li class="text-start">
-                                      {{$detail->nama}}
+                                      {{$detail->nama}},  
+                                      {{$detail->created_at->diffForHumans()}}
                                     </li>
                                   @empty
                                       <span class="badge bg-danger">Detail Belum Ditambahkan</span>
@@ -37,6 +39,11 @@
                                 </ol>
                                 {{-- @endif --}}
                             </td>
+                                <td>
+                                    <a href="{{route('petani.show',$item->id)}}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="{{route('petani.edit',$item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="{{route('petani.destroy',$item->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                </td>
                         </tr>
                     @endforeach
                 </tbody>

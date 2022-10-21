@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{Petani, Detail_lahan};
+use App\Models\{Petani, Detail_lahan, Reponse};
 
 class Lahan extends Model
 {
@@ -27,5 +27,10 @@ class Lahan extends Model
     public function detail_lahans()
     {
         return $this->hasMany(Detail_lahan::class);
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(Reponse::class);
     }
 }

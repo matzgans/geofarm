@@ -1,8 +1,5 @@
 @extends('layout.dashboard-template')
 @section('content')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/font-awesome.min.css">
 
     <body>
 
@@ -14,18 +11,18 @@
                 <table class="table table-hover" id="dataTable">
                     <thead>
                         <tr class="fw-bold">
-                            <td>Nama</td>
-                            <td>Petani</td>
+                            <td>Luas</td>
                             <td>Status Pengairan</td>
+                            <td>Di Tanam</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody class="table-striped">
                         @foreach ($data as $item)
                             <tr>
-                                <td>{{ $item->luas }}</td>
-                                <td>{{ $item->petani->nama }}</td>
+                                <td>{{ $item->luas }} Hektar</td>
                                 <td>{{ $item->status_pengairan }}</td>
+                                <td>{{ $item->created_at }}</td>
                             <td>
                                 <a href="" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                                 <a href="" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>

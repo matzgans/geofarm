@@ -28,82 +28,81 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets') }}/css/style.css" rel="stylesheet">
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body>
 
     <div class="row justify-content-center mt-5">
-        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
-            <div class="d-flex justify-content-center py-4">
-                <a href="{{route('welcome')}}" class="logo d-flex align-items-center w-auto">
-                    <img src="assets/img/logo.png" alt="">
-                    <span class="d-none d-lg-block">Geo - Farm</span>
-                </a>
-            </div><!-- End Logo -->
+        <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
 
             <div class="card mb-3">
 
                 <div class="card-body">
-
-                    <div class="pt-4 pb-2">
-                        <h5 class="card-title text-center pb-0 fs-4">Login <br>Geo - Farm</h5>
-                    </div>
-                    @if (Session('message'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ Session('message') }}
+                    <div class="row">
+                        <div class="col">
+                            <img src="{{asset('logo')}}/logo-header.png" class="img-fluid" alt="">
+                            <h1 class="text-center text-bolder" style="font-family: 'Jost', sans-serif;">Geo - <span class="text-warning">Farm</span></h1>
                         </div>
-                    @endif
-
-                    <form action="{{ route('loginproses') }}" method="POST" enctype="multipart/form-data"
-                        class="row">
-                        @csrf
-                        <div class="col-sm-12 mb-3">
-                            <label for="yourUsername" class="form-label">Email</label>
-                            <div class="input-group has-validation">
-                                <input type="email" name="email"
-                                    class="form-control @error('email') is-invalid @enderror" id="email">
-                                @error('email')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                        <div class="col">
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Login <br>Geo - Farm</h5>
+                            </div>
+                            @if (Session('message'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session('message') }}
+                                </div>
+                            @endif
+        
+                            <form action="{{ route('loginproses') }}" method="POST" enctype="multipart/form-data" class="row">
+                                @csrf
+                                <div class="col-sm-12 mb-3 mt-3">
+                                    {{-- <label for="yourUsername" class="form-label">Email</label> --}}
+                                    <div class="input-group has-validation">
+                                        <input type="email" name="email"
+                                            class="form-control @error('email') is-invalid @enderror rounded-pill text-center" id="email" placeholder="Email">
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <label for="yourPassword" class="form-label">Password</label>
-                                    <input type="password" name="password"
-                                        class="form-control @error('password') is-invalid @enderror" id="password">
-                                    @error('password')
+                                </div>
+        
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12">
+                                            {{-- <label for="yourPassword" class="form-label">Password</label> --}}
+                                            <input type="password" name="password"
+                                                class="form-control @error('password') is-invalid @enderror rounded-pill text-center" id="password" placeholder="Password">
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                    </div>
+                                </div>
+        
+                                <div class="col-6 mt-5">
+                                    <div class="col-md-12 @error('g-recaptcha-response') is-invalid @enderror"> {!! htmlFormSnippet() !!} </div>
+                                    @error("g-recaptcha-response")
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="col">
-                                    <label for="yourPassword" class="form-label">Konfirmasi Password</label>
-                                    <input type="password" name="current_password"
-                                        class="form-control @error('current_password') is-invalid @enderror"
-                                        id="current_password">
-                                    @error('current_password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+        
+                                <div class="col-12 mt-3">
+                                    <button class="btn btn-primary w-100" type="submit">Login</button>
                                 </div>
-                            </div>
+                                <div class="col-12">
+                                    <p class="small mb-0 mt-3">Belum punya akun? <a href="{{route('register')}}">Buat Akun</a></p>
+                                </div>
+                            </form>
                         </div>
+                    </div>
 
-                        <div class="col-12 mt-5">
-                            <button class="btn btn-primary w-100" type="submit">Login</button>
-                        </div>
-                        <div class="col-12">
-                            <p class="small mb-0 mt-3">Belum punya akun? <a href="{{route('register')}}">Buat Akun</a></p>
-                        </div>
-                    </form>
+                    
 
                 </div>
             </div>
@@ -117,7 +116,6 @@
 
         </div>
     </div>
-
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script> --}}
     <script src="{{ asset('assets') }}/vendor/apexcharts/apexcharts.min.js"></script>

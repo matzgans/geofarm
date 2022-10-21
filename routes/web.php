@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\{AuthController, PetaniController, LahanController, LandingController,
-                             DetailLahanController};
+                             DetailLahanController, BeritaController, ReponseController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [LandingController::class, 'index'])->name('welcome');
+Route::post('/reponse/store', [ReponseController::class, 'store'])->name('reponse.store');
 Route::group(['middleware' => ['auth', 'hakakses:pegawai']], function(){
     // petani
     Route::get('/petani/index', [PetaniController::class, 'index'])->name('petani.index');
@@ -26,6 +27,13 @@ Route::group(['middleware' => ['auth', 'hakakses:pegawai']], function(){
     Route::get('/petani/edit/{id}', [PetaniController::class, 'edit'])->name('petani.edit');
     Route::get('/petani/show/{id}', [PetaniController::class, 'show'])->name('petani.show');
     Route::post('/petani/update/{id}', [PetaniController::class, 'update'])->name('petani.update');
+
+    // Berita
+    Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
+    Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
+
+    // Respon
+    Route::get('/reponse/index', [ReponseController::class, 'index'])->name('reponse.index');
 });
 
 Route::group(['middleware' => ['auth', 'hakakses:petani']], function(){

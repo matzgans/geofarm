@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Lahan, Petani};
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
-class LahanController extends Controller
+class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class LahanController extends Controller
      */
     public function index()
     {
-        $data = Lahan::where('petani_id', auth()->user()->petani->id)->get();
-        $active = 'lahan';
-        return view('lahan.lahan-index', compact('data', 'active'));
+        $active = "berita";
+        return view('berita.berita-index', compact('active'));
     }
 
     /**
@@ -26,9 +25,7 @@ class LahanController extends Controller
      */
     public function create()
     {
-        $data = Petani::get();
-        $active = 'lahan';
-        return view('lahan.lahan-create', compact('data', 'active'));
+        //
     }
 
     /**
@@ -39,23 +36,16 @@ class LahanController extends Controller
      */
     public function store(Request $request)
     {
-        Lahan::create([
-            'luas'=>$request->luas,
-            'status_pengairan'=>$request->status_pengairan,
-            'lat'=>$request->lat,
-            'long'=>$request->long,
-            'petani_id'=>auth()->user()->petani->id,
-        ]);
-        return redirect()->back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Lahan $lahan)
+    public function show(Berita $berita)
     {
         //
     }
@@ -63,10 +53,10 @@ class LahanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lahan $lahan)
+    public function edit(Berita $berita)
     {
         //
     }
@@ -75,10 +65,10 @@ class LahanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lahan $lahan)
+    public function update(Request $request, Berita $berita)
     {
         //
     }
@@ -86,10 +76,10 @@ class LahanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lahan $lahan)
+    public function destroy(Berita $berita)
     {
         //
     }
