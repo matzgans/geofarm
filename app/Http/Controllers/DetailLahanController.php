@@ -20,8 +20,15 @@ class DetailLahanController extends Controller
             ->select('detail_lahans.*','lahans.id')
             ->where('lahans.petani_id',auth()->user()->petani->id)->get();
         $active = 'dashboard';
+<<<<<<< HEAD
         $active = 'detaillahan';
         return view('detail_lahan.detail-lahan-index' ,compact('data','active', 'active'));
+=======
+        $id_lahan = Lahan::where('petani_id', auth()->user()->petani->id)->first()->id;
+        $detailAva = Detail_lahan::where('lahan_id', $id_lahan)->first();
+        $active = 'detaillahan';
+        return view('detail_lahan.detail-lahan-index', compact('data', 'active', 'detailAva', 'active'));
+>>>>>>> b60b122bb7f2cd935100eb4c419916cc10830e1b
     }
 
     /**
@@ -50,8 +57,8 @@ class DetailLahanController extends Controller
             'tanggal_panen'=>$jum_tanggal,
         ]);
         $data = Detail_lahan::create($request->all());
-        if($request->hasFile('foto_lahan')){
-            $request->file('foto_lahan')->move('foto_lahan/',$request->file('foto_lahan')->getClientOriginalName());
+        if ($request->hasFile('foto_lahan')) {
+            $request->file('foto_lahan')->move('foto_lahan/', $request->file('foto_lahan')->getClientOriginalName());
             $data->foto_lahan = $request->file('foto_lahan')->getClientOriginalName();
             $data->save();
         }
@@ -66,7 +73,6 @@ class DetailLahanController extends Controller
      */
     public function show(Detail_lahan $detail_lahan)
     {
-        
     }
 
     /**
