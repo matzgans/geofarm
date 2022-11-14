@@ -56,7 +56,7 @@
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
-                    <i class="fa-solid fa-seedling"></i>
+                    <i class="fa-brands fa-pagelines"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{$countTanam}}</h6>
@@ -94,11 +94,30 @@
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success">
-                    <i class="fa-solid fa-wheat-awn"></i>
+                    <i class="fa-solid fa-seedling"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{$countJagung}}</h6>
                     <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Jagung</span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Sayur</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success">
+                    <i class="fa-solid fa-seedling"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{$countSayur}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Sayur</span>
 
                   </div>
                 </div>
@@ -157,12 +176,50 @@
                 <h5 class="card-title">Sawah</span></h5>
 
                 <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
-                    <i class="fa-solid fa-wheat-awn"></i>
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-primary">
+                    <i class="fa-solid fa-map"></i>
                 </div>
                 <div class="ps-3">
                     <h6>{{$countSawah}}</h6>
                     <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Sawah  </span>
+
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+            <div class="card-body">
+                <h5 class="card-title">Sayur</span></h5>
+
+                <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="fa-brands fa-pagelines"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>{{$countSayur}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Sayur</span>
+
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4 ms-auto">
+            <div class="card info-card sales-card">
+            <div class="card-body">
+                <h5 class="card-title">Jagung</span></h5>
+
+                <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>{{$countJagung}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Jagung</span>
 
                 </div>
                 </div>

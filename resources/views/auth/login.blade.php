@@ -54,7 +54,7 @@
                                 </div>
                             @endif
         
-                            <form action="{{ route('loginproses') }}" method="POST" enctype="multipart/form-data" class="row">
+                            <form action="{{ route('loginproses') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-sm-12 mb-3 mt-3">
                                     {{-- <label for="yourUsername" class="form-label">Email</label> --}}
@@ -81,15 +81,6 @@
                                                 </div>
                                             @enderror
                                     </div>
-                                </div>
-        
-                                <div class="col-6 mt-5">
-                                    <div class="col-md-12 @error('g-recaptcha-response') is-invalid @enderror"> {!! htmlFormSnippet() !!} </div>
-                                    @error("g-recaptcha-response")
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
         
                                 <div class="col-12 mt-3">

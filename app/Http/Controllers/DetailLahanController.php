@@ -20,15 +20,8 @@ class DetailLahanController extends Controller
             ->select('detail_lahans.*','lahans.id')
             ->where('lahans.petani_id',auth()->user()->petani->id)->get();
         $active = 'dashboard';
-<<<<<<< HEAD
         $active = 'detaillahan';
         return view('detail_lahan.detail-lahan-index' ,compact('data','active', 'active'));
-=======
-        $id_lahan = Lahan::where('petani_id', auth()->user()->petani->id)->first()->id;
-        $detailAva = Detail_lahan::where('lahan_id', $id_lahan)->first();
-        $active = 'detaillahan';
-        return view('detail_lahan.detail-lahan-index', compact('data', 'active', 'detailAva', 'active'));
->>>>>>> b60b122bb7f2cd935100eb4c419916cc10830e1b
     }
 
     /**
@@ -40,6 +33,7 @@ class DetailLahanController extends Controller
     {
         $data = Lahan::FindOrFail($id);
         $active = 'detaillahan';
+        $active = 'dashboard';
         return view('detail_lahan.detail-lahan-create', compact('data', 'active'));
     }
 

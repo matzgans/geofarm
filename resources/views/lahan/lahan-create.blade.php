@@ -13,15 +13,16 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-12 col-6 mb-2">
-                                    <label for="luas" class="form-label">Luas</label>
+                                    <label for="luas" class="form-label">Luas (Hektar)</label>
                                     <input type="number" name="luas" class="form-control" id="luas">
                                 </div>
                                 <div class="col-md-12 col-6 mb-2">
                                     <label for="status_pengairan" class="form-label">Status Pengairan</label>
                                     <select class="form-select" name="status_pengairan" aria-label="Default select example">
                                         <option selected disabled>Pilih Pengairan</option>
-                                        <option value="pam">Pam</option>
-                                        <option value="sumur_bor">Sumur bor</option>
+                                        <option value="pam">PDAM</option>
+                                        <option value="sumur_bor">Sumur Suntik</option>
+                                        <option value="sumur_bor">Irigasi</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 col-6 mb-2">

@@ -60,17 +60,13 @@ class AuthController extends Controller
     public function loginproses(Request $request)
     {
         $request->validate([
-            'email'=>['required', 'email'],
-            'password'=>['required'],
-            'current_password'=>['required'],
-            'g-recaptcha-response' => ['required'],
+            'email'=>'required',
+            'password'=>'required',
         ]);
 
-        if($request->password != $request->current_password){
-            return redirect()->back()->with('message', 'Periksa Password Anda');
-        }
+
         if(Auth::attempt($request->only('email', 'password'))){
-            return redirect('/dashboard');
+            return redirect('dashboard');
         }else{
             return redirect()->back()->with('message', 'Periksa Email Password'); 
         }
