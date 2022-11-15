@@ -27,8 +27,6 @@
     <link href="{{ asset('assets') }}/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets') }}/css/style.css" rel="stylesheet">
-    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body>
