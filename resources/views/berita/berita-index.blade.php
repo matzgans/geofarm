@@ -12,7 +12,7 @@
     </div><!-- End Page Title -->
     <div class="card">
         <div class="card-body pb-0">
-            <h5 class="card-title">Data Petani</h5>
+            <h5 class="card-title">Data Berita</h5>
             <a href="{{route('berita.create')}}" class="btn btn-sm btn-success mb-3">Tambah Data</a>
 
             <table class="table table-borderless dataTable">

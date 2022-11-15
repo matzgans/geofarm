@@ -7,10 +7,10 @@
         <div class="card">
             <div class="card-body pb-0">
                 <h5 class="card-title">Data Desa</h5>
-                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Tambah Desa
                   </button>
-                <table class="table table-borderless dataTable">
+                <table class="table table-stripped dataTable" style="overflow-x: auto">
                     <thead>
                         <tr class="fw-bold">
                             <th>No</th>
@@ -24,8 +24,8 @@
                             <td>{{$value+1}}</td>
                             <td>{{$item->nama_desa}}</td>
                             <td>
-                              <a href="{{route('desa.edit',$item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                              <a href="{{route('desa.destroy',$item->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                              <a href="{{route('desa.edit',$item->id)}}" class="btn btn-warning text-light btn-sm rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                              <a href="{{route('desa.destroy',$item->id)}}" class="btn btn-danger btn-sm rounded-circle"><i class="fa-solid fa-trash"></i></a>
 
                             </td>
                           </tr>

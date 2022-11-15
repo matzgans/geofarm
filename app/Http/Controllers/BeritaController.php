@@ -25,7 +25,8 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        $active = "berita";
+        return view('berita.berita-create', compact('active'));
     }
 
     /**

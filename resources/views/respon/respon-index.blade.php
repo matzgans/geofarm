@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" style="overflow-x: auto">
                             <h5 class="card-title">Data Responden</h5>
                             <table class="table table-hover dataTable">
                                 <thead>

@@ -243,7 +243,7 @@
         <div class="row justify-content-center">
           <div class="col-md-10 col-12">
             <div class="card border-success">
-              <div class="card-body">
+              <div class="card-body" style="overflow-x: auto">
                 <h5 class="card-title text-success">
                   Data Lahan
                 </h5>
@@ -281,7 +281,7 @@
           </div>
           <div class="col-md-10 col-12 mt-3">
             <div class="card border-success border-2">
-              <div class="card-body">
+              <div class="card-body" style="overflow-x: auto">
                 <h5 class="card-title text-success">
                   Data Lahan
                 </h5>

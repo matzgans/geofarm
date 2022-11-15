@@ -40,37 +40,18 @@
                                 <h5 class="card-title">Profile Details</h5>
 
                                 <div class="row mb-2">
-                                    <div class="col-lg-3 col-md-4 label ">NIK</div>
+                                    <div class="col-lg-3 col-md-4 label ">Nama Kelompok</div>
                                     <div class="col-lg-4 col-md-8">
-                                        <input type="number" name="nik" class="form-control form-control-sm"
-                                            id="nik" value="{{ $data->nik }}">
+                                        <input type="text" name="nama_kelompok" class="form-control form-control-sm"
+                                            id="nama_kelompok" value="{{ $data->nama_kelompok }}">
                                     </div>
                                 </div>
 
                                 <div class="row mb-2">
-                                    <div class="col-lg-3 col-md-4 label">Nama Lengkap</div>
+                                    <div class="col-lg-3 col-md-4 label">Desa</div>
                                     <div class="col-lg-4 col-md-8">
-                                        <input type="text" name="nama" class="form-control form-control-sm"
-                                            id="nama" value="{{ $data->nama }}">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-2">
-                                    <div class="col-lg-3 col-md-4 label">Tempat & Tanggal Lahir</div>
-                                    <div class="col-lg-2 col-md-8">
-                                        <input type="text" name="tempat_lahir" class="form-control form-control-sm"
-                                            id="tempat_lahir" value="{{ $data->tempat_lahir }}">
-                                    </div>
-                                    <div class="col-lg-2 col-md-8 ms-0">
-                                        <input type="date" name="tanggal_lahir" class="form-control form-control-sm"
-                                            id="tanggal_lahir" value="{{ $data->tanggal_lahir }}">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-2">
-                                    <div class="col-lg-3 col-md-4 label">Alamat</div>
-                                    <div class="col-lg-4 col-md-8">
-                                        <textarea class="form-control form-control-sm" name="alamat" id="alamat">{{ $data->alamat }}</textarea>
+                                        <input type="text" name="desa" class="form-control form-control-sm"
+                                            id="desa" value="{{ $data->desa }}">
                                     </div>
                                 </div>
 

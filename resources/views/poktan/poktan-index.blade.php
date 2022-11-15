@@ -19,7 +19,8 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="table-striped">
+                    <tbody>
+                      
                     </tbody>
                 </table>
             </div>

@@ -8,7 +8,7 @@
                 <h5 class="card-title">
                     Edit Data
                 </h5>
-                <form action="{{route('desa.update', $data->id)}}" method="post" class="row justify-content-center">
+                <form action="{{route('desa.update', $data->id)}}" method="post" class="row">
                     @csrf
                     <div class="col-md-5 col-12 mb-2">
                         <label for="nama_desa" class="form-label">Nama Desa</label>

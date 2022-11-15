@@ -27,7 +27,8 @@
     <link href="{{ asset('assetsDashboard') }}/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="{{ asset('assetsDashboard') }}/vendor/remixicon/remixicon.css" rel="stylesheet">
     {{-- <link href="{{ asset('assetsDashboard') }}/vendor/simple-datatables/style.css" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <!-- Template Main CSS File -->
     <link href="{{ asset('assetsDashboard') }}/css/style.css" rel="stylesheet">
 
@@ -239,7 +240,13 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{{ route('logout') }}"
                         data-bs-toggle="dropdown">
-                        <img src="{{ asset('assetsDashboard') }}/img/profile-img.jpg" alt="Profile"
+                        <img src="
+                                @if (auth()->user()->role == 'pegawai')
+                                    {{ asset('pegawai').'/'.auth()->user()->pegawai->foto }}
+                                @elseif (auth()->user()->role == 'petani')
+                                    {{ auth()->user()->petani->nama }}
+                                @endif
+                        " alt="Profile"
                             class="rounded-circle">
                         <span
                             class="d-none d-md-block dropdown-toggle ps-2 text-capitalize">{{ auth()->user()->role }}</span>
@@ -338,14 +345,14 @@
                 <li class="nav-item">
                     <a class="nav-link {{ $active == 'desa' ? 'active' : 'collapsed' }}"
                         href="{{ route('desa.index') }}">
-                        <i class="fa-solid fa-person"></i>
+                        <i class="fa-solid fa-home"></i>
                         <span>Desa</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $active == 'petani' ? 'active' : 'collapsed' }}"
                         href="{{ route('petani.index') }}">
-                        <i class="fa-solid fa-person"></i>
+                        <i class="fa-solid fa-people-roof"></i>
                         <span>Kelompok Tani</span>
                     </a>
                 </li>
@@ -711,6 +718,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     {{-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready( function(){
             $('.dataTable').DataTable();
