@@ -250,6 +250,7 @@
                 <table class="table table-hove dataTable" id="dataTable">
                   <thead>
                     <tr>
+                      <th>Nama Kelompok</th>
                       <th>Nama Petani</th>
                       <th>Luas Lahan</th>
                       <th>Detail Lahan Dan Umur Tanaman</th>
@@ -258,7 +259,8 @@
                   <tbody>
                     @foreach($data as $item)
                     <tr>
-                      <td>{{$item->petani->nama}}</td>
+                      <td>{{$item->petani->nama_kelompok}}</td>
+                      <td>{{$item->nama_petani}}</td>
                       <td>{{$item->luas}}</td>
                       <td>
                         @forelse($item->detail_lahans as $detail)
@@ -286,6 +288,7 @@
                 <table class="table table-bordered dataTable" id="dataTable">
                   <thead>
                     <tr>
+                      <th>Nama Kelompok</th>
                       <th>Nama Petani</th>
                       <th>Nama Komoditas</th>
                       <th>Perkiraan Panen</th>
@@ -294,7 +297,8 @@
                   <tbody>
                     @foreach($data as $item)
                     <tr>
-                      <td>{{$item->petani->nama}}</td>
+                      <td>{{$item->petani->nama_kelompok}}</td>
+                      <td>{{$item->nama_petani}}</td>
                       <td>
                         <ol>
                             @forelse($item->detail_lahans as $detail)
@@ -782,10 +786,11 @@
 
           L.marker([{{$item->lat}}, {{$item->long}}]).addTo(map)
             .bindPopup(
-            "Pemilik : {{$item->petani->nama}} <br>"+ 
+            "Nama Kelompok: {{$item->petani->nama_kelompok}} <br>"+
+            "Pemilik : {{$item->nama_petani}} <br>"+ 
             "Luas : {{$item->luas}} <br>"+
             "Pengairan : {{$item->status_pengairan}} <br>"+
-            "kategori tanaman @foreach($item->detail_lahans as $detail) {{$detail->nama}}, @endforeach <br>"
+            "kategori tanaman : @forelse($item->detail_lahans as $detail) {{$detail->nama}},@empty Kosong @endforelse <br>"
             ).openPopup();
 
             // latlngs = [

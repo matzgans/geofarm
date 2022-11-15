@@ -45,7 +45,7 @@ class DetailLahanController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $jum_tanggal = date('Y-m-d', strtotime('+10 days', strtotime($request->tanggal_penanaman)));
+        $jum_tanggal = date('Y-m-d', strtotime('+120 days', strtotime($request->tanggal_penanaman)));
         $request->request->add([
             'lahan_id'=>$id,
             'tanggal_panen'=>$jum_tanggal,

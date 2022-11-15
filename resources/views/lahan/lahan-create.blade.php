@@ -13,6 +13,10 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-12 col-6 mb-2">
+                                    <label for="nama_petani" class="form-label">Nama Petani</label>
+                                    <input type="text" name="nama_petani" class="form-control" id="nama_petani">
+                                </div>
+                                <div class="col-md-12 col-6 mb-2">
                                     <label for="luas" class="form-label">Luas (Hektar)</label>
                                     <input type="number" name="luas" class="form-control" id="luas">
                                 </div>

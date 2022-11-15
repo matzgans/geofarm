@@ -33,7 +33,7 @@
 
           L.marker([{{$item->lat}}, {{$item->long}}]).addTo(map)
             .bindPopup(
-            "Pemilik : {{$item->petani->nama}} <br>"+ 
+            "Pemilik : {{$item->nama_petani}} <br>"+ 
             "Luas : {{$item->luas}} <br>"+
             "Pengairan : {{$item->status_pengairan}}"+
             "kategori tanaman @foreach($item->detail_lahans as $detail) {{$detail}} @endforeach"

@@ -12,6 +12,7 @@ class Lahan extends Model
 
     protected $table = 'lahans';
     Protected $fillable = [
+        'nama_petani',
         'luas',
         'petani_id',
         'status_pengairan',

@@ -15,12 +15,9 @@ return new class extends Migration
     {
         Schema::create('petanis', function (Blueprint $table) {
             $table->id();
-            $table->string('nik')->unique();
-            $table->string('nama');
-            $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
+            $table->string('nama_kelompok');
+            $table->string('desa');
             $table->string('foto')->nullable();
-            $table->text('alamat');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Lahan, Petani};
+use App\Models\{Poktan, Petani, Desa};
 use Illuminate\Http\Request;
 
-class LahanController extends Controller
+class PoktanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,13 @@ class LahanController extends Controller
      */
     public function index()
     {
-        $data = Lahan::where('petani_id', auth()->user()->petani->id)->get();
-        $active = 'lahan';
-        return view('lahan.lahan-index', compact('data', 'active'));
+        $active = 'poktan';
+
+        $data = Poktan::all();
+        $desa = Desa::get();
+        $petani = Petani::get();
+
+        return view('poktan.poktan-index', compact('data', 'active', 'desa', 'petani'));
     }
 
     /**
@@ -26,9 +30,7 @@ class LahanController extends Controller
      */
     public function create()
     {
-        $data = Petani::get();
-        $active = 'lahan';
-        return view('lahan.lahan-create', compact('data', 'active'));
+        //
     }
 
     /**
@@ -39,24 +41,16 @@ class LahanController extends Controller
      */
     public function store(Request $request)
     {
-        Lahan::create([
-            'nama_petani'=>$request->nama_petani,
-            'luas'=>$request->luas,
-            'status_pengairan'=>$request->status_pengairan,
-            'lat'=>$request->lat,
-            'long'=>$request->long,
-            'petani_id'=>auth()->user()->petani->id,
-        ]);
-        return redirect()->back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Poktan  $poktan
      * @return \Illuminate\Http\Response
      */
-    public function show(Lahan $lahan)
+    public function show(Poktan $poktan)
     {
         //
     }
@@ -64,10 +58,10 @@ class LahanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Poktan  $poktan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lahan $lahan)
+    public function edit(Poktan $poktan)
     {
         //
     }
@@ -76,10 +70,10 @@ class LahanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Poktan  $poktan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lahan $lahan)
+    public function update(Request $request, Poktan $poktan)
     {
         //
     }
@@ -87,10 +81,10 @@ class LahanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Poktan  $poktan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lahan $lahan)
+    public function destroy(Poktan $poktan)
     {
         //
     }

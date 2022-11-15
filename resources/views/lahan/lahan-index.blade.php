@@ -11,6 +11,8 @@
                 <table class="table table-hover" id="dataTable">
                     <thead>
                         <tr class="fw-bold">
+                            <th>No</th>
+                            <th>Nama Petani</th>
                             <td>Luas</td>
                             <td>Status Pengairan</td>
                             <td>Di Tanam</td>
@@ -18,8 +20,10 @@
                         </tr>
                     </thead>
                     <tbody class="table-striped">
-                        @foreach ($data as $item)
+                        @foreach ($data as $value=>$item)
                             <tr>
+                                <td>{{$value+1}}</td>
+                                <td>{{$item->nama_petani}}</td>
                                 <td>{{ $item->luas }} Hektar</td>
                                 <td>{{ $item->status_pengairan }}</td>
                                 <td>{{ $item->created_at }}</td>

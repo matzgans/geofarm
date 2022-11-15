@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{User, Lahan};
+use App\Models\{User, Lahan, Poktan};
 
 class Petani extends Model
 {
@@ -12,11 +12,8 @@ class Petani extends Model
 
     protected $table = 'petanis';
     protected $fillable = [
-        'nama',
-        'nik',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'alamat',
+        'nama_kelompok',
+        'desa',
         'user_id',
         'foto'
     ];
@@ -30,5 +27,10 @@ class Petani extends Model
     public function lahans()
     {
         return $this->hasMany(Lahan::class);
+    }
+
+    public function poktan()
+    {
+        return $this->hasMany(Poktan::class);
     }
 }

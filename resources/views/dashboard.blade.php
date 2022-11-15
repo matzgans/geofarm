@@ -246,6 +246,7 @@
         @foreach ($petanis as $item)
             L.marker([{{ $item->lat }}, {{ $item->long }}]).addTo(map)
                 .bindPopup(
+                    "Nama Pemilik : {{$item->nama_petani}} <br>"+
                     "Luas : {{ $item->luas }} <br>" +
                     "Pengairan : {{ $item->status_pengairan }} <br>"+
                     "kategori tanaman : @foreach($item->detail_lahans as $detail) {{$detail->nama}} @endforeach <br>"+

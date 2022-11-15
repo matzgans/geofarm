@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\{AuthController, PetaniController, LahanController, LandingController,
-                             DetailLahanController, BeritaController, ReponseController};
+                             DetailLahanController, BeritaController, ReponseController,
+                            DesaController, PoktanController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,21 @@ Route::group(['middleware' => ['auth', 'hakakses:pegawai']], function(){
 
     // Respon
     Route::get('/reponse/index', [ReponseController::class, 'index'])->name('reponse.index');
+
+    // desa
+    Route::get('/desa/index', [DesaController::class, 'index'])->name('desa.index');
+    Route::get('/desa/edit/{id}', [DesaController::class, 'edit'])->name('desa.edit');
+    Route::get('/desa/destroy/{id}', [DesaController::class, 'destroy'])->name('desa.destroy');
+    Route::post('/desa/store', [DesaController::class, 'store'])->name('desa.store');
+    Route::post('/desa/update/{id}', [DesaController::class, 'update'])->name('desa.update');
+
+    // desa
+    Route::get('/poktan/index', [PoktanController::class, 'index'])->name('poktan.index');
+    Route::get('/poktan/edit/{id}', [PoktanController::class, 'edit'])->name('poktan.edit');
+    Route::get('/poktan/destroy/{id}', [PoktanController::class, 'destroy'])->name('poktan.destroy');
+    Route::post('/poktan/store', [PoktanController::class, 'store'])->name('poktan.store');
+    Route::post('/poktan/update/{id}', [PoktanController::class, 'update'])->name('poktan.update');
+
 });
 
 Route::group(['middleware' => ['auth', 'hakakses:petani']], function(){

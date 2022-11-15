@@ -336,10 +336,17 @@
                 </li>
             @elseif(auth()->user()->role == 'pegawai')
                 <li class="nav-item">
+                    <a class="nav-link {{ $active == 'desa' ? 'active' : 'collapsed' }}"
+                        href="{{ route('desa.index') }}">
+                        <i class="fa-solid fa-person"></i>
+                        <span>Desa</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ $active == 'petani' ? 'active' : 'collapsed' }}"
                         href="{{ route('petani.index') }}">
                         <i class="fa-solid fa-person"></i>
-                        <span>Petani</span>
+                        <span>Kelompok Tani</span>
                     </a>
                 </li>
                 <li class="nav-item">

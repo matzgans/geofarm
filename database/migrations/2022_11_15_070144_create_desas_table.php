@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lahans', function (Blueprint $table) {
+        Schema::create('desas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_petani');
-            $table->integer('luas');
-            $table->foreignId('petani_id')->constrained('petanis')->onDelete('cascade');
-            $table->string('status_pengairan');
-            $table->string('lat');
-            $table->string('long');
+            $table->string('nama_desa');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lahans');
+        Schema::dropIfExists('desas');
     }
 };

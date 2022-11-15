@@ -41,22 +41,19 @@ class PetaniController extends Controller
     public function store(Request $request)
     {
         $user = new User;
-        $user->name = $request->nama;
-        $user->email = strtolower(str_replace(' ', '.', $request->nama.'@gmail.com'));
-        $user->password = bcrypt('petani123');
+        $user->name = $request->nama_kelompok;
+        $user->email = strtolower(str_replace(' ', '.', $request->nama_kelompok.'@gmail.com'));
+        $user->password = bcrypt('poktan123');
         $user->role = 'petani';
         $user->remember_token = Str::random(60);
         $user->save();
         $request->request->add(['user_id'=> $user->id]);
         
         $data = Petani::create([
-            'nama'=>$request->nama,
-            'nik'=>$request->nik,
-            'tempat_lahir'=>$request->tempat_lahir,
-            'tanggal_lahir'=>$request->tanggal_lahir,
+            'nama_kelompok'=>$request->nama_kelompok,
+            'desa'=>$request->desa,
             'foto'=>$request->foto,
             'user_id'=>$request->user_id,
-            'alamat'=>$request->alamat,
         ]);
 
         if($request->hasFile('foto')){

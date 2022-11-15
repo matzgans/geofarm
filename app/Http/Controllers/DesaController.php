@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Lahan, Petani};
+use App\Models\Desa;
 use Illuminate\Http\Request;
 
-class LahanController extends Controller
+class DesaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class LahanController extends Controller
      */
     public function index()
     {
-        $data = Lahan::where('petani_id', auth()->user()->petani->id)->get();
-        $active = 'lahan';
-        return view('lahan.lahan-index', compact('data', 'active'));
+        $data = Desa::all();
+        $active = 'desa';
+        return view('desa.desa-index', compact('data', 'active'));
     }
 
     /**
@@ -26,9 +26,7 @@ class LahanController extends Controller
      */
     public function create()
     {
-        $data = Petani::get();
-        $active = 'lahan';
-        return view('lahan.lahan-create', compact('data', 'active'));
+        //
     }
 
     /**
@@ -39,13 +37,8 @@ class LahanController extends Controller
      */
     public function store(Request $request)
     {
-        Lahan::create([
-            'nama_petani'=>$request->nama_petani,
-            'luas'=>$request->luas,
-            'status_pengairan'=>$request->status_pengairan,
-            'lat'=>$request->lat,
-            'long'=>$request->long,
-            'petani_id'=>auth()->user()->petani->id,
+        Desa::create([
+            'nama_desa'=>$request->nama_desa,
         ]);
         return redirect()->back();
     }
@@ -53,10 +46,10 @@ class LahanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Desa  $desa
      * @return \Illuminate\Http\Response
      */
-    public function show(Lahan $lahan)
+    public function show(Desa $desa)
     {
         //
     }
@@ -64,34 +57,40 @@ class LahanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Desa  $desa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lahan $lahan)
+    public function edit($id)
     {
-        //
+        $data = Desa::FindOrFail($id);
+        $active = 'desa';
+        return view('desa.desa-edit', compact('data', 'active'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Desa  $desa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lahan $lahan)
+    public function update(Request $request,$id)
     {
-        //
+        $data = Desa::FindOrFail($id);
+        $data->update($request->all());
+        return redirect()->route('desa.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Desa  $desa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lahan $lahan)
+    public function destroy($id)
     {
-        //
+        $data = Desa::FindOrFail($id);
+        $data->delete();
+        return redirect()->back();
     }
 }
