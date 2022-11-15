@@ -30,10 +30,10 @@
     <link href="{{ asset('assets') }}/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #198754">
 
     <div class="row justify-content-center mt-5">
-        <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
+        <div class="col-sm-10 col-md-8 col-lg-6 d-flex flex-column align-items-center justify-content-center" style="height:80vh;">
 
             <div class="card mb-3">
 
