@@ -17,11 +17,11 @@ class DetailLahanController extends Controller
     {
         $data = Lahan::where('petani_id', auth()->user()->petani->id)->get();
         $detail_lahan = Detail_lahan::join('lahans','lahans.id','=','detail_lahans.lahan_id')
-            ->select('detail_lahans.*','lahans.id')
+            ->select('detail_lahans.*')
             ->where('lahans.petani_id',auth()->user()->petani->id)->get();
         $active = 'dashboard';
         $active = 'detaillahan';
-        return view('detail_lahan.detail-lahan-index' ,compact('data','active', 'active'));
+        return view('detail_lahan.detail-lahan-index' ,compact('data','active', 'active', 'detail_lahan'));
     }
 
     /**
@@ -98,8 +98,10 @@ class DetailLahanController extends Controller
      * @param  \App\Models\Detail_lahan  $detail_lahan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Detail_lahan $detail_lahan)
+    public function destroy($id)
     {
-        //
+        $data = Detail_lahan::FindOrFail($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

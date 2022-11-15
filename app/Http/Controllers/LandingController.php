@@ -49,6 +49,11 @@ class LandingController extends Controller
             ->select('detail_lahans.*','lahans.id')
             ->where('lahans.petani_id',auth()->user()->petani->id)
             ->count();
+            $padi = Detail_lahan::join('lahans','lahans.id','=','detail_lahans.lahan_id')
+            ->select('detail_lahans.*','lahans.id')
+            ->where('lahans.petani_id',auth()->user()->petani->id)
+            ->where('nama', 'Padi')
+            ->count();
             // $sawah = Detail_lahan::where('lahan_id',$lahan->id)->get();
  
             $lahan1 = Lahan::where('petani_id','=',auth()->user()->petani->id)->get()->count();
@@ -58,7 +63,8 @@ class LandingController extends Controller
                 $countTanam = $jum_tanam;
                 $countSayur = $sayur;
                 $countJagung = $jagung;
-                return view('dashboard', compact('petanis','active','countSawah', 'countTanam', 'lahan1', 'countSayur', 'countJagung'));
+                $countPadi = $padi;
+                return view('dashboard', compact('petanis','active','countSawah', 'countPadi','countTanam', 'lahan1', 'countSayur', 'countJagung'));
             }
             $lahan1 = 0;
             $countLahan = 0;
@@ -73,8 +79,9 @@ class LandingController extends Controller
         $countSawah = Detail_lahan::where('nama', 'sawah')->count();
         $countJagung = Detail_lahan::where('nama', 'jagung')->count();
         $countSayur = Detail_lahan::where('nama', 'sayur')->count();
+        $countPadi = Detail_lahan::where('nama', 'Padi')->count();
         $countTanam = Detail_lahan::count();
         $active = 'dashboard';
-        return view('dashboard', compact('data', 'countPetani', 'countLahan', 'active', 'countSawah', 'countTanam', 'countJagung', 'countSayur'));
+        return view('dashboard', compact('data', 'countPadi','countPetani', 'countLahan', 'active', 'countSawah', 'countTanam', 'countJagung', 'countSayur'));
     }
 }

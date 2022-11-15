@@ -208,6 +208,25 @@
 
             </div>
         </div><!-- End Sales Card -->
+        <div class="col-xxl-4 col-md-4">
+            <div class="card info-card sales-card">
+            <div class="card-body">
+                <h5 class="card-title">Padi</span></h5>
+
+                <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-warning">
+                    <i class="fa-brands fa-pagelines"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>{{$countPadi}}</h6>
+                    <span class="text-success small pt-1 fw-bold">Jumlah</span> <span class="text-muted small pt-2 ps-1">Padi</span>
+
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div><!-- End Sales Card -->
         <div class="col-xxl-4 col-md-4 ms-auto">
             <div class="card info-card sales-card">
             <div class="card-body">

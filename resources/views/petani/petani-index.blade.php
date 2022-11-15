@@ -6,7 +6,7 @@
 
         <div class="card">
             <div class="card-body pb-0" style="overflow-x: auto">
-                <h5 class="card-title">Data Petani</h5>
+                <h5 class="card-title">Data Kelompok Tani</h5>
                 <a href="{{route('petani.create')}}" class="btn btn-sm btn-success mb-3">Tambah Data</a>
     
                 <table class="table table-borderless dataTable">
@@ -15,6 +15,7 @@
                             <th>No</th>
                             <th>Nama Kelompok</th>
                             <th>Petani</th>
+                            <th>Komoditas yang ditanam</th>
                             <th>Email</th>
                             <th>Aksi</th>
                         </tr>
@@ -29,6 +30,20 @@
                                         <ul>
                                             <li>{{$items->nama_petani}}</li> 
                                         </ul>
+                                    @empty
+                                        <span>Data kosong</span>
+                                    @endforelse
+                                </td>
+                                <td>
+                                    @forelse ($item->lahans as $items)
+                                        @forelse ($items->detail_lahans as $value)
+                                            <ul>
+                                                <li>{{$value->nama}}</li>
+                                            </ul>
+                                        @empty
+                                            <span>Data kosong</span>
+
+                                        @endforelse
                                     @empty
                                         <span>Data kosong</span>
                                     @endforelse

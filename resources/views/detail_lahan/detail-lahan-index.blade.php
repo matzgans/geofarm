@@ -18,14 +18,11 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach ($data as $item)
+                    {{-- @foreach ($data as $item)
                         <tr>
                             <td>{{ $item->luas }}</td>
                             <td>{{ $item->status_pengairan }}</td>
                             <td>
-                                {{-- @if (($detailAva))
-                                    <span class="badge bg-danger"> Detail Belum Ditambahkan</span>
-                                @else --}}
                                 <ol>
                                   @forelse($item->detail_lahans as $detail)
                                     <li class="text-start">
@@ -37,13 +34,26 @@
                                   @endforelse
                                      
                                 </ol>
-                                {{-- @endif --}}
                             </td>
                                 <td>
                                     <a href="{{route('petani.show',$item->id)}}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                                     <a href="{{route('petani.edit',$item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="{{route('petani.destroy',$item->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="{{route('detail_lahan.destroy',$item->de->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                 </td>
+                        </tr>
+                    @endforeach --}}
+                    @foreach ($detail_lahan as $item)
+                        <tr>
+                            <td>{{$item->lahan->luas}}</td>
+                            <td>{{$item->lahan->status_pengairan}}</td>
+                            <td>{{$item->nama}},{{$item->created_at->diffForHumans()}}</td>
+                            <td>
+                                <td>
+                                    <a href="{{route('petani.show',$item->id)}}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="{{route('petani.edit',$item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="{{route('detail_lahan.destroy',$item->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

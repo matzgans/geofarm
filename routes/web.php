@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth', 'hakakses:petani']], function(){
     // Detail Lahans
     Route::get('/detail_lahan/index', [DetailLahanController::class, 'index'])->name('detail_lahan.index');
     Route::get('/detail_lahan/create/{id}', [DetailLahanController::class, 'create'])->name('detail_lahan.create');
+    Route::get('/detail_lahan/destroy/{id}', [DetailLahanController::class, 'destroy'])->name('detail_lahan.destroy');
     Route::post('/detail_lahan/store/{id}', [DetailLahanController::class, 'store'])->name('detail_lahan.store');
 });
 
