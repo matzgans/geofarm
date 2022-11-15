@@ -29,7 +29,7 @@
                                 <td>{{ $item->created_at }}</td>
                             <td>
                                 <a href="" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
-                                <a href="" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{route('lahan.edit', $item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>

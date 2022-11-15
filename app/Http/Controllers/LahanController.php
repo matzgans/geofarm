@@ -67,9 +67,11 @@ class LahanController extends Controller
      * @param  \App\Models\Lahan  $lahan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lahan $lahan)
+    public function edit($id)
     {
-        //
+        $data = Lahan::FindOrFail($id);
+        $active = 'lahanedit';
+        return view('lahan.lahan-edit', compact('data', 'active'));
     }
 
     /**

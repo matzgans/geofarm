@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth', 'hakakses:pegawai']], function(){
 Route::group(['middleware' => ['auth', 'hakakses:petani']], function(){
     // lahans
     Route::get('/lahan/index', [LahanController::class, 'index'])->name('lahan.index');
+    Route::get('/lahan/edit/{id}', [LahanController::class, 'edit'])->name('lahan.edit');
     Route::get('/lahan/create', [LahanController::class, 'create'])->name('lahan.create');
     Route::post('/lahan/store', [LahanController::class, 'store'])->name('lahan.store');
 
