@@ -82,8 +82,8 @@
               khususnya Di Gorontalo
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="#services" class="btn-get-started scrollto">Get Started</a>
+            <a href="https://www.youtube.com/watch?v=yI_KX2I0OZk&t=12s" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -565,16 +565,16 @@
               <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Bagaimana sayur bisa tumbuh dengan baik? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                  Sayur saya selalu gagal panen, Padahal perawatannya dijaga dengan baik
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed"> Batas Tanah Untuk petani milik Dani dimana? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed"> Pengairan Bermasalah? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
+                  ada proble mengenai pengairan
                 </p>
               </div>
             </li>
@@ -583,7 +583,7 @@
               <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Bagaiman supaya penjualan padi kedepannya? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
+                  Saya inging memasarkan komoditas tanaman, akan tetapi saya bingung arah penjualannya kemana?
                 </p>
               </div>
             </li>
@@ -642,13 +642,16 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="email">Masukan Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                  <input type="email" class="form-control" name="email @error('email') is-invalid @enderror" id="email" required>
+                  @error('email')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                  @enderror
                 </div>
               </div>
-              <div class="form-group">
-                <label for="lat">Id Lahan</label>
-                <input type="number" class="form-control" name="lahan_id" id="id" required>
-              </div>
+              
+                <input type="hidden" class="form-control" name="lahan_id" id="id" required>
               <div class="form-group">
                 <label for="name">Response</label>
                 <textarea class="form-control" name="response" rows="10" required></textarea>
@@ -835,7 +838,8 @@
 
           L.marker([{{$item->lat}}, {{$item->long}}]).addTo(map)
             .bindPopup(
-            "Pemilik : {{$item->petani->nama}} <br>"+ 
+            "Nama Kelompok: {{$item->petani->nama_kelompok}} <br>"+
+            "Pemilik : {{$item->nama_petani}} <br>"+ 
             "Luas : {{$item->luas}} <br>"+
             "Pengairan : {{$item->status_pengairan}} <br>"+
             "kategori tanaman @foreach($item->detail_lahans as $detail) {{$detail->nama}}, @endforeach <br>"+

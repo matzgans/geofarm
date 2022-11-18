@@ -72,7 +72,8 @@ class LandingController extends Controller
             $countSayur = 0;
             $countTanam = 0;
             $countJagung = 0;
-            return view('dashboard', compact('petanis','active','countLahan','countSawah', 'countTanam', 'lahan1', 'countSayur', 'countJagung'));
+            $countPadi = 0;
+            return view('dashboard', compact('petanis','active','countLahan', 'countPadi','countSawah', 'countTanam', 'lahan1', 'countSayur', 'countJagung'));
         }
         $countPetani = Petani::count();
         $countLahan = Lahan::count();

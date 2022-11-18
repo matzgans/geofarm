@@ -11,15 +11,15 @@
                         <div class="row">
                             <div class="col-md-12 col-12 mb-2">
                                 <label for="nama" class="form-label">nama</label>
-                                <input type="text" name="nama" class="form-control" id="nama">
+                                <input type="text" name="nama" class="form-control" id="nama" required>
                             </div>
                             <div class="col-md-12 col-12 mb-2">
                                 <label for="tanggal_tananaman" class="form-label">Tanggal Penanaman</label>
-                                <input type="date" name="tanggal_penanaman"  id="Foto Lahan" class="form-control">
+                                <input type="date" name="tanggal_penanaman"  id="Foto Lahan" class="form-control" required>
                             </div>
                             <div class="col-md-12 col-12 mb-2">
                                 <label for="foto_lahan" class="form-label">Foto Lahan</label>
-                                <input type="file" name="foto_lahan"  id="Foto Lahan" class="form-control">
+                                <input type="file" name="foto_lahan"  id="Foto Lahan" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>

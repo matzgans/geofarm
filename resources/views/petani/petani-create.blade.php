@@ -15,15 +15,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-2">
                                     <label for="nama_kelompok" class="form-label">Nama Kelompok</label>
-                                    <input type="text" name="nama_kelompok" class="form-control" id="nama_kelompok">
+                                    <input type="text" name="nama_kelompok" class="form-control" id="nama_kelompok" required>
                                 </div>
                                 <div class="col-md-6 col-12 mb-2">
                                     <label for="desa" class="form-label">Desa</label>
-                                    <input type="text" name="desa" class="form-control" id="desa">
+                                    <input type="text" name="desa" class="form-control" id="desa" required>
                                 </div>
                                 <div class="col-md-12 col-12 mb-2">
                                     <label for="foto" class="form-label">Foto</label>
-                                    <input type="file" name="foto" class="form-control" id="foto">
+                                    <input type="file" name="foto" class="form-control" id="foto" required>
                                 </div>
                                 <button type="submit" class="btn btn-success">Simpan</button>
                             </div>

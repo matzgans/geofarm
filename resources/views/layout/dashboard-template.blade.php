@@ -189,13 +189,13 @@
                     </a>
                 </li>
             @elseif(auth()->user()->role == 'pegawai')
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ $active == 'desa' ? 'active' : 'collapsed' }}"
                         href="{{ route('desa.index') }}">
                         <i class="fa-solid fa-home"></i>
                         <span>Desa</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ $active == 'petani' ? 'active' : 'collapsed' }}"
                         href="{{ route('petani.index') }}">

@@ -40,6 +40,7 @@ class PetaniController extends Controller
      */
     public function store(Request $request)
     {
+        
         $user = new User;
         $user->name = $request->nama_kelompok;
         $user->email = strtolower(str_replace(' ', '.', $request->nama_kelompok.'@gmail.com'));

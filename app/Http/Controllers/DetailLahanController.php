@@ -45,6 +45,10 @@ class DetailLahanController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $request->validate([
+            'jum_tanggal'=>['required'],
+            'foto_lahan'=>['required'],
+        ]);
         $jum_tanggal = date('Y-m-d', strtotime('+120 days', strtotime($request->tanggal_penanaman)));
         $request->request->add([
             'lahan_id'=>$id,

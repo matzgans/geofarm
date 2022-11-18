@@ -43,7 +43,7 @@
                                     <div class="col-lg-3 col-md-4 label ">Nama Kelompok</div>
                                     <div class="col-lg-4 col-md-8">
                                         <input type="text" name="nama_kelompok" class="form-control form-control-sm"
-                                            id="nama_kelompok" value="{{ $data->nama_kelompok }}">
+                                            id="nama_kelompok" value="{{ $data->nama_kelompok }}" required>
                                     </div>
                                 </div>
 
@@ -51,7 +51,7 @@
                                     <div class="col-lg-3 col-md-4 label">Desa</div>
                                     <div class="col-lg-4 col-md-8">
                                         <input type="text" name="desa" class="form-control form-control-sm"
-                                            id="desa" value="{{ $data->desa }}">
+                                            id="desa" value="{{ $data->desa }}" required>
                                     </div>
                                 </div>
 

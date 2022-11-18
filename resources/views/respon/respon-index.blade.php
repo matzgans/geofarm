@@ -17,6 +17,7 @@
                                         <th>Respon</th>
                                         <th>Luas</th>
                                         <th>Petani</th>
+                                        <th>Kelompok Tani</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -28,7 +29,8 @@
                                         <td>{{$item->email}}</td>
                                         <td>{{$item->response}}</td>
                                         <td>{{$item->lahan->luas}}</td>
-                                        <td>{{$item->lahan->petani->nama}}</td>
+                                        <td>{{$item->lahan->nama_petani}}</td>
+                                        <td>{{$item->lahan->petani->nama_kelompok}}</td>
                                         <td>
                                             <a href="" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                                             <a href="" class="btn btn-warning btn-sm"><i class="fa-solid fa-edit"></i></a>

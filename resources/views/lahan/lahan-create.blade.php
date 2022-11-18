@@ -14,15 +14,15 @@
                             <div class="row">
                                 <div class="col-md-12 col-6 mb-2">
                                     <label for="nama_petani" class="form-label">Nama Petani</label>
-                                    <input type="text" name="nama_petani" class="form-control" id="nama_petani">
+                                    <input type="text" name="nama_petani" class="form-control" id="nama_petani" required>
                                 </div>
                                 <div class="col-md-12 col-6 mb-2">
                                     <label for="luas" class="form-label">Luas (Hektar)</label>
-                                    <input type="number" name="luas" class="form-control" id="luas">
+                                    <input type="number" name="luas" class="form-control" id="luas" required>
                                 </div>
                                 <div class="col-md-12 col-6 mb-2">
                                     <label for="status_pengairan" class="form-label">Status Pengairan</label>
-                                    <select class="form-select" name="status_pengairan" aria-label="Default select example">
+                                    <select class="form-select" name="status_pengairan" aria-label="Default select example" required>
                                         <option selected disabled>Pilih Pengairan</option>
                                         <option value="pam">PDAM</option>
                                         <option value="sumur_bor">Sumur Suntik</option>
@@ -31,11 +31,11 @@
                                 </div>
                                 <div class="col-md-6 col-6 mb-2">
                                     <label for="lat" class="form-label">Latitude</label>
-                                    <input type="text" name="lat" id="Latitude" class="form-control lat">
+                                    <input type="text" name="lat" id="Latitude" class="form-control lat" required>
                                 </div>
                                 <div class="col-md-6 col-6 mb-2">
                                     <label for="long" class="form-label">longtitude</label>
-                                    <input type="text" name="long" id="Longitude" class="form-control long">
+                                    <input type="text" name="long" id="Longitude" class="form-control long" required>
                                 </div>
                                 <button type="submit" class="btn btn-success">Simpan</button>
                             </div>

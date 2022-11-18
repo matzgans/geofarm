@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reponse;
+use Illuminate\Validation\Rules\Unique;
 
 class ReponseController extends Controller
 {
@@ -16,6 +17,10 @@ class ReponseController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nama'=>['required'],
+            'email'=>['required', 'unique:reponses'],
+        ]);
         Reponse::create([
             'nama'=>$request->nama,
             'email'=>$request->email,
