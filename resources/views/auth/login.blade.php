@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <img src="{{asset('logo')}}/logo-header.png" class="img-fluid" alt="">
+                            <img src="{{asset('logo')}}/logo-header.png" class="img-fluid" alt="Riset Teknologi Informasi">
                             <h1 class="text-center text-bolder" style="font-family: 'Jost', sans-serif;">Geo - <span class="text-warning">Farm</span></h1>
                         </div>
                         <div class="col">

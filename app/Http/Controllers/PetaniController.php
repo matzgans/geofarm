@@ -102,13 +102,13 @@ class PetaniController extends Controller
     {
         $data = Petani::FindOrFail($id);
         $data->user->update([
-            'name'=>$request->nama,
-            'email'=>strtolower(str_replace(' ','.', $request->nama.'.com')),
+            'name'=>$request->nama_kelompok,
+            'email'=>strtolower(str_replace(' ','.', $request->nama_kelompok.'.com')),
         ]);
 
         if($request->foto == null){
             $data->update([
-                'nama'=>$request->nama,
+                'nama_kelompok'=>$request->nama_kelompok,
                 'nik'=>$request->nik,
                 'tempat_lahir'=>$request->tempat_lahir,
                 'tanggal_lahir'=>$request->tanggal_lahir,
@@ -122,7 +122,7 @@ class PetaniController extends Controller
             }
            
             $data->update([
-                'nama'=>$request->nama,
+                'nama_kelompok'=>$request->nama_kelompok,
                 'nik'=>$request->nik,
                 'tempat_lahir'=>$request->tempat_lahir,
                 'tanggal_lahir'=>$request->tanggal_lahir,

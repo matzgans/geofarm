@@ -15,7 +15,8 @@ class BeritaController extends Controller
     public function index()
     {
         $active = "berita";
-        return view('berita.berita-index', compact('active'));
+        $data = Berita::where('pegawai_id', auth()->user()->pegawai->id)->get();
+        return view('berita.berita-index', compact('active', 'data'));
     }
 
     /**
@@ -37,7 +38,18 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = Berita::create([
+            'judul'=>$request->judul,
+            'konten'=>$request->konten,
+            'pegawai_id'=>auth()->user()->pegawai->id,
+            'thumbnail'=>$request->thumbnail,
+        ]);
+        if ($request->hasFile('thumbnail')) {
+            $request->file('thumbnail')->move('thumbnail/', $request->file('thumbnail')->getClientOriginalName());
+            $data->thumbnail = $request->file('thumbnail')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->route('berita.index');
     }
 
     /**
@@ -57,9 +69,11 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit($id)
     {
-        //
+        $data =  Berita::FindOrFail($id);
+        $active = "berita edit";
+        return view('berita.berita-edit', compact('active', 'data'));
     }
 
     /**
@@ -69,9 +83,36 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request, $id)
     {
-        //
+
+        $data = Berita::FindOrFail($id);
+        if($request->thumbnail == null){
+            $data->update([
+                'judul'=>$request->judul,
+                'konten'=>$request->konten,
+                'pegawai_id'=>auth()->user()->pegawai->id,
+                'thumbnail'=>$request->thumbnail,
+            ]);
+            return redirect()->back();
+        }else{
+            if (file_exists(public_path() . '/thumbnail/'.$data->thumbnail)) {
+                unlink(public_path() . '/thumbnail/'.$data->thumbnail);
+            }
+           
+            $data->update([
+                'judul'=>$request->judul,
+                'konten'=>$request->konten,
+                'pegawai_id'=>auth()->user()->pegawai->id,
+                'thumbnail'=>$request->thumbnail,
+            ]);
+            if ($request->hasFile('thumbnail')) {
+                $request->file('thumbnail')->move('thumbnail/', $request->file('thumbnail')->getClientOriginalName());
+                $data->thumbnail = $request->file('thumbnail')->getClientOriginalName();
+                $data->save();
+            }
+        }
+        return redirect()->back();
     }
 
     /**
@@ -80,8 +121,14 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $berita)
+    public function destroy($id)
     {
-        //
+        $data = Berita::FindOrFail($id);
+        if (file_exists(public_path() . '/thumbnail/'.$data->thumbnail)) {
+            unlink(public_path() . '/thumbnail/'.$data->thumbnail);
+            $data->delete();
+        }
+        $data->delete();
+        return redirect()->back();
     }
 }

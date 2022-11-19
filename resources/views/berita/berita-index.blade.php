@@ -18,6 +18,7 @@
             <table class="table table-borderless dataTable">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Judul</th>
                         <th>Kontent</th>
                         <th>Dibuat</th>
@@ -25,6 +26,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($data as $value=>$item)
+                    
+                        <tr>
+                            <td>{{$value+1}}</td>
+                            <td>{{$item->judul}}</td>
+                            <td>{{$item->konten}}</td>
+                            <td>{{$item->created_at->diffForHumans()}}</td>
+                            <td>
+                                <a href="{{route('berita.edit', $item->id)}}" class="btn btn-warning text-light btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{route('berita.destroy', $item->id)}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+
+                    @endforeach
 
                 </tbody>
             </table>

@@ -60,10 +60,10 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
           <li><a class="nav-link scrollto" href="#services">Peta</a></li>
+          <li><a class="nav-link scrollto" href="#servicess">Detail Lahan</a></li>
           <li><a class="nav-link   scrollto" href="#portfolio">Galeri</a></li>
           <li><a class="nav-link scrollto" href="#team">Petani</a></li>
           <li><a class="nav-link scrollto" href="#contact">Respon Masyarakat</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -82,8 +82,7 @@
               khususnya Di Gorontalo
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#services" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=yI_KX2I0OZk&t=12s" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="https://www.youtube.com/watch?v=yI_KX2I0OZk&t=12s" class="ps-0 ms-0 glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -232,7 +231,7 @@
     <!-- End Skills Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+    <section id="servicess" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -263,14 +262,14 @@
                       <td>{{$item->nama_petani}}</td>
                       <td>{{$item->luas}}</td>
                       <td>
-                        @forelse($item->detail_lahans as $detail)
-                          <ol>
+                        <ol>
+                            @forelse($item->detail_lahans as $detail)
                             <li>{{$detail->nama}},(
                             {{\Carbon\Carbon::parse($detail->tanggal_penanaman)->diffForHumans()}})</li>
+                            @empty
+                            <span class="badge bg-danger">Belum DiTanam</span>
+                            @endforelse
                           </ol>
-                        @empty
-                          <span class="badge bg-danger">Belum DiTanam</span>
-                        @endforelse
                       </td>
                     </tr>
                     @endforeach

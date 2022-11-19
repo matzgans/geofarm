@@ -32,6 +32,10 @@ Route::group(['middleware' => ['auth', 'hakakses:pegawai']], function(){
     // Berita
     Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
     Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
+    Route::post('/berita/store', [BeritaController::class, 'store'])->name('berita.store');
+    Route::post('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
+    Route::get('/berita/destroy/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    Route::get('/berita/edit/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
 
     // Respon
     Route::get('/reponse/index', [ReponseController::class, 'index'])->name('reponse.index');

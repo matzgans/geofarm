@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Detail_lahan;
 use Illuminate\Http\Request;
 use App\Models\Lahan;
+use Carbon\Carbon;
 
 class DetailLahanController extends Controller
 {
@@ -46,20 +47,31 @@ class DetailLahanController extends Controller
     public function store(Request $request, $id)
     {
         $request->validate([
-            'jum_tanggal'=>['required'],
-            'foto_lahan'=>['required'],
+            'tanggal_penanaman'=>['required'],
+            'nama'=>['required'],
         ]);
         $jum_tanggal = date('Y-m-d', strtotime('+120 days', strtotime($request->tanggal_penanaman)));
         $request->request->add([
             'lahan_id'=>$id,
             'tanggal_panen'=>$jum_tanggal,
         ]);
-        $data = Detail_lahan::create($request->all());
+        
+        $data = Detail_lahan::insertGetId([
+            'nama'=>strtolower($request->nama),
+            'lahan_id'=>$id,
+            'tanggal_penanaman'=>$request->tanggal_penanaman,
+            'tanggal_panen'=>$jum_tanggal,
+            'created_at'=> Carbon::now(),
+            // 'foto_lahan'=>$request->foto_lahan,
+        ]);
         if ($request->hasFile('foto_lahan')) {
             $request->file('foto_lahan')->move('foto_lahan/', $request->file('foto_lahan')->getClientOriginalName());
-            $data->foto_lahan = $request->file('foto_lahan')->getClientOriginalName();
-            $data->save();
+            $imgnama = $request->file('foto_lahan')->getClientOriginalName();
+            Detail_lahan::findOrFail($data)->update([
+                'foto_lahan' => $imgnama
+            ]);
         }
+        // return dd($data);
         return redirect()->route('detail_lahan.index');
     }
 

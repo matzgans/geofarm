@@ -14,7 +14,7 @@
                                 <input type="text" name="nama" class="form-control" id="nama" required>
                             </div>
                             <div class="col-md-12 col-12 mb-2">
-                                <label for="tanggal_tananaman" class="form-label">Tanggal Penanaman</label>
+                                <label for="tanggal_penanaman" class="form-label">Tanggal Penanaman</label>
                                 <input type="date" name="tanggal_penanaman"  id="Foto Lahan" class="form-control" required>
                             </div>
                             <div class="col-md-12 col-12 mb-2">

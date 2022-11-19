@@ -31,11 +31,11 @@
                                 </div>
                                 <div class="col-md-6 col-6 mb-2">
                                     <label for="lat" class="form-label">Latitude</label>
-                                    <input type="text" name="lat" id="Latitude" class="form-control lat" required>
+                                    <input type="text" name="lat" id="Latitude" class="form-control lat" required readonly>
                                 </div>
                                 <div class="col-md-6 col-6 mb-2">
                                     <label for="long" class="form-label">longtitude</label>
-                                    <input type="text" name="long" id="Longitude" class="form-control long" required>
+                                    <input type="text" name="long" id="Longitude" class="form-control long" required readonly>
                                 </div>
                                 <button type="submit" class="btn btn-success">Simpan</button>
                             </div>

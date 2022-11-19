@@ -10,22 +10,22 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-12">
-                        <form action="{{ route('berita.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('berita.store' , $data->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-2">
                                     <label for="judul" class="form-label">Judul</label>
-                                    <input type="text" name="judul" class="form-control" id="judul" required>
+                                    <input type="text" name="judul" class="form-control" id="judul" required value="{{$data->judul}}">
                                 </div>
                                 <div class="col-md-6 col-6 mb-2">
                                     <label for="thumbnail" class="form-label">Foto</label>
-                                    <input type="file" name="thumbnail" class="form-control" id="thumbnail" required>
+                                    <input type="file" name="thumbnail" class="form-control" id="thumbnail" required value="{{$data->thumbnail}}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-12 mb-2">
                                     <label for="kontent" class="form-label">Konten</label>
-                                    <textarea name="konten" id="konten" cols="30" rows="10" class="form-control" required></textarea>
+                                    <textarea name="konten" id="konten" cols="30" rows="10" class="form-control" required placeholder="{{$data->konten}}">{{$data->konten}}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success">Simpan</button>
