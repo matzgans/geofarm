@@ -62,7 +62,7 @@ class DetailLahanController extends Controller
             'tanggal_penanaman'=>$request->tanggal_penanaman,
             'tanggal_panen'=>$jum_tanggal,
             'created_at'=> Carbon::now(),
-            // 'foto_lahan'=>$request->foto_lahan,
+            'foto_lahan'=>$request->foto_lahan,
         ]);
         if ($request->hasFile('foto_lahan')) {
             $request->file('foto_lahan')->move('foto_lahan/', $request->file('foto_lahan')->getClientOriginalName());
